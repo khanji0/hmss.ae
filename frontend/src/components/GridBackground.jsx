@@ -60,7 +60,7 @@ const GridBackground = () => {
       }
 
       // Draw dots at intersections with mouse proximity effect
-      ctx.fillStyle = `rgba(0, 255, 209, ${dotOpacity})`;
+      ctx.fillStyle = `rgba(0, 115, 47, ${dotOpacity})`; // UAE Green
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           // Calculate distance from mouse
@@ -77,9 +77,16 @@ const GridBackground = () => {
             const factor = 1 - distance / maxDistance;
             radius = dotRadius + factor * 2;
             opacity = dotOpacity + factor * 0.4;
+            
+            // Alternate between UAE colors based on position
+            const colorIndex = (Math.floor(x / gridSize) + Math.floor(y / gridSize)) % 2;
+            ctx.fillStyle = colorIndex === 0 
+              ? `rgba(0, 115, 47, ${opacity})` // UAE Green
+              : `rgba(255, 0, 0, ${opacity})`; // UAE Red
+          } else {
+            ctx.fillStyle = `rgba(0, 115, 47, ${opacity})`;
           }
 
-          ctx.fillStyle = `rgba(0, 255, 209, ${opacity})`;
           ctx.beginPath();
           ctx.arc(x, y, radius, 0, Math.PI * 2);
           ctx.fill();

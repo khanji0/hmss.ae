@@ -29,9 +29,17 @@ const Navigation = () => {
       style={{ height: '80px' }}
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo with UAE Colors */}
         <div className="flex items-center">
-          <span className="text-2xl font-semibold tracking-tight text-black">
+          <span 
+            className="text-2xl font-semibold tracking-tight"
+            style={{
+              background: 'linear-gradient(135deg, #00732F 0%, #FF0000 50%, #000000 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
             HUSSAIN MURAD
           </span>
         </div>
@@ -60,8 +68,8 @@ const Navigation = () => {
             onClick={() => scrollToSection('contact')}
             className="btn-primary"
             style={{
-              background: '#00FFD1',
-              color: '#000000',
+              background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
+              color: '#FFFFFF',
               border: 'none',
               borderRadius: '0px',
               padding: '12px 24px',
@@ -70,6 +78,12 @@ const Navigation = () => {
               cursor: 'pointer',
               transition: 'all 0.4s ease-in-out',
               minHeight: '48px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #FF0000 0%, #00732F 100%)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)';
             }}
           >
             Get Started
@@ -111,8 +125,8 @@ const Navigation = () => {
               onClick={() => scrollToSection('contact')}
               className="text-left"
               style={{
-                background: '#00FFD1',
-                color: '#000000',
+                background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
+                color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '0px',
                 padding: '12px 24px',

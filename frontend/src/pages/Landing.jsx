@@ -68,12 +68,21 @@ const Landing = () => {
               }}
             >
             <h1 
-              className="font-semibold leading-[1.1] tracking-tight text-black mb-8"
+              className="font-semibold leading-[1.1] tracking-tight mb-8"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
-              The Future of
+              <span style={{ color: '#000000' }}>The Future of</span>
               <br />
-              <span style={{ color: '#00FFD1' }}>Freight Forwarding</span>
+              <span 
+                style={{
+                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 50%, #000000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Freight Forwarding
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-black/85 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
@@ -82,8 +91,8 @@ const Landing = () => {
               <button
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: '#00FFD1',
-                  color: '#000000',
+                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
+                  color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '0px',
                   padding: '16px 32px',
@@ -97,12 +106,12 @@ const Landing = () => {
                   gap: '12px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 255, 209, 0.1)';
-                  e.currentTarget.style.color = '#00FFD1';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #FF0000 0%, #00732F 100%)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#00FFD1';
-                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)';
+                  e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
                 Start Shipping Smarter
@@ -142,7 +151,15 @@ const Landing = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 max-w-5xl mx-auto">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-semibold text-[#00FFD1] mb-2">
+                <div 
+                  className="text-5xl md:text-6xl font-semibold mb-2"
+                  style={{
+                    background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
                   {stat.value}
                 </div>
                 <div className="text-black/60 text-lg">{stat.label}</div>
@@ -165,10 +182,20 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              Intelligent Logistics
+              <span style={{ color: '#000000' }}>Comprehensive </span>
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Logistics Solutions
+              </span>
             </h2>
             <p className="text-xl text-black/70 max-w-2xl">
-              Powered by advanced AI and automation, our platform delivers unprecedented efficiency and reliability.
+              Established in 2002 with full recognition from Dubai Government, local bodies, and chambers. Providing customized freight solutions focused on invaluable customer satisfaction.
             </p>
           </div>
 
@@ -185,7 +212,16 @@ const Landing = () => {
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <div className="text-6xl font-bold text-[#00FFD1]/30 mb-6">
+                <div 
+                  className="text-6xl font-bold mb-6"
+                  style={{
+                    background: 'linear-gradient(135deg, #00732F 30%, #FF0000 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    opacity: 0.3
+                  }}
+                >
                   {service.number}
                 </div>
                 <h3 className="text-3xl font-semibold text-black mb-4">
@@ -213,10 +249,20 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              Built for Tomorrow
+              <span style={{ color: '#000000' }}>Trusted Since </span>
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                2002
+              </span>
             </h2>
             <p className="text-xl text-black/70 max-w-3xl mx-auto">
-              We combine cutting-edge technology with decades of logistics expertise to create solutions that don't just meet today's demands—they anticipate tomorrow's challenges.
+              HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
             </p>
           </div>
 
@@ -234,7 +280,12 @@ const Landing = () => {
                 }}
               >
                 <div className="mb-6">
-                  <CheckCircle2 size={48} className="text-[#00FFD1]" />
+                  <CheckCircle2 
+                    size={48} 
+                    style={{ 
+                      color: index === 0 ? '#00732F' : index === 1 ? '#FF0000' : '#000000' 
+                    }} 
+                  />
                 </div>
                 <h3 className="text-2xl font-semibold text-black mb-4">
                   {feature.title}
@@ -261,7 +312,17 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              Trusted by Industry Leaders
+              <span style={{ color: '#000000' }}>Trusted by </span>
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Industry Leaders
+              </span>
             </h2>
           </div>
 
@@ -324,7 +385,17 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              Let's Connect
+              <span style={{ color: '#000000' }}>Let's </span>
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Connect
+              </span>
             </h2>
             <p className="text-xl text-black/70">
               Ready to transform your logistics operations? Get in touch with our team.
@@ -348,8 +419,18 @@ const Landing = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
-                  style={{ borderRadius: '0px' }}
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#00732F';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                  }}
                 />
               </div>
               <div>
@@ -360,8 +441,18 @@ const Landing = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
-                  style={{ borderRadius: '0px' }}
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#00732F';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                  }}
                 />
               </div>
             </div>
@@ -391,8 +482,8 @@ const Landing = () => {
             <button
               type="submit"
               style={{
-                background: '#00FFD1',
-                color: '#000000',
+                background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
+                color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '0px',
                 padding: '16px 32px',
@@ -408,12 +499,12 @@ const Landing = () => {
                 gap: '12px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 255, 209, 0.1)';
-                e.currentTarget.style.color = '#00FFD1';
+                e.currentTarget.style.background = 'linear-gradient(135deg, #FF0000 0%, #00732F 100%)';
+                e.currentTarget.style.transform = 'scale(1.02)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#00FFD1';
-                e.currentTarget.style.color = '#000000';
+                e.currentTarget.style.background = 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)';
+                e.currentTarget.style.transform = 'scale(1)';
               }}
             >
               Send Message
@@ -429,11 +520,21 @@ const Landing = () => {
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <div className="text-2xl font-semibold text-black mb-2">HUSSAIN MURAD</div>
-              <div className="text-black/60">Dubai, UAE</div>
+              <div 
+                className="text-2xl font-semibold mb-2"
+                style={{
+                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 50%, #000000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                HUSSAIN MURAD SHIPPING SERVICES LLC
+              </div>
+              <div className="text-black/60">Established 2002 | Dubai, UAE</div>
             </div>
             <div className="text-black/40 text-center md:text-right">
-              © 2025 Hussain Murad Shipping Services. All rights reserved.
+              © 2025 Hussain Murad Shipping Services LLC. All rights reserved.
             </div>
           </div>
         </div>

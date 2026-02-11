@@ -1,90 +1,92 @@
-// Mock data for Hussain Murad Shipping Services
+// Mock data for Hussain Murad Shipping Services LLC
 
 export const companyInfo = {
-  name: "Hussain Murad Shipping Services",
-  tagline: "AI-Powered Freight Forwarding for the Modern Era",
+  name: "Hussain Murad Shipping Services LLC",
+  shortName: "HMSS",
+  tagline: "Forefront of Global Transportation & Logistics",
   location: "Dubai, UAE",
-  description: "Revolutionizing global logistics with intelligent automation and seamless connectivity"
+  established: "2002",
+  description: "At the forefront of global transportation and logistics worldwide. Providing comprehensive freight solutions with customized services focused on invaluable customer satisfaction and cost-effective solutions."
 };
 
 export const services = [
   {
     id: 1,
     number: "01",
-    title: "AI Route Optimization",
-    description: "Machine learning algorithms analyze thousands of variables to select the most efficient routes, reducing transit time by up to 40%."
+    title: "Global Freight Forwarding",
+    description: "Comprehensive range of global transportation services connecting importers and exporters worldwide with efficient, timely, and cost-effective freight solutions."
   },
   {
     id: 2,
     number: "02",
-    title: "Real-Time Tracking",
-    description: "Complete visibility across your entire supply chain with IoT sensors and satellite tracking integration."
+    title: "Supply Chain Management",
+    description: "Complete logistics management of goods, information, and financial transactions ensuring timely flow of inventory from suppliers to end customers on a global basis."
   },
   {
     id: 3,
     number: "03",
-    title: "Automated Customs",
-    description: "Smart documentation processing and customs clearance powered by advanced AI, eliminating delays and errors."
+    title: "Customs Clearance",
+    description: "Seamless customs clearance services with full recognition from local bodies, chambers, and Government of Dubai, ensuring smooth import and export operations."
   },
   {
     id: 4,
     number: "04",
-    title: "Predictive Analytics",
-    description: "Forecast demand, optimize inventory, and prevent disruptions before they happen with our predictive engine."
+    title: "Customized Solutions",
+    description: "Tailored logistics solutions designed to meet your specific business needs, delivering cost-effective and efficient freight management at all times."
   }
 ];
 
 export const clients = [
+  { name: "Dubai Customs", logo: "DC" },
+  { name: "Dubai Chamber", logo: "DCC" },
+  { name: "DP World", logo: "DPW" },
   { name: "Emirates Airlines", logo: "EA" },
-  { name: "Dubai Ports World", logo: "DPW" },
-  { name: "Maersk", logo: "MSK" },
-  { name: "DHL", logo: "DHL" },
-  { name: "Aramex", logo: "ARX" },
-  { name: "FedEx", logo: "FDX" }
+  { name: "Jebel Ali Port", logo: "JAP" },
+  { name: "Dubai Trade", logo: "DT" }
 ];
 
 export const testimonials = [
   {
     id: 1,
-    quote: "Hussain Murad transformed our supply chain operations. The AI-powered routing reduced our shipping costs by 35% in the first quarter alone.",
-    author: "Sarah Al-Mansouri",
-    role: "VP of Operations",
-    company: "Emirates Retail Group"
+    quote: "HMSS has been our trusted logistics partner for over 10 years. Their understanding of Dubai's trade ecosystem and commitment to timely delivery is unmatched.",
+    author: "Ahmed Al Maktoum",
+    role: "Import Director",
+    company: "Emirates Trading Group"
   },
   {
     id: 2,
-    quote: "The real-time visibility and predictive analytics have been game-changing. We can now anticipate issues before they impact our customers.",
-    author: "Michael Chen",
-    role: "Supply Chain Director",
-    company: "Global Tech Industries"
+    quote: "The customized freight solutions from Hussain Murad have transformed our supply chain efficiency. Their team's expertise in global logistics is exceptional.",
+    author: "Sarah Johnson",
+    role: "Supply Chain Manager",
+    company: "Global Retail Corporation"
   },
   {
     id: 3,
-    quote: "Working with Hussain Murad feels like stepping into the future. Their automation technology has eliminated hours of manual work from our processes.",
-    author: "Fatima Hassan",
-    role: "Logistics Manager",
-    company: "Al Futtaim Group"
+    quote: "Since 2002, HMSS has consistently delivered cost-effective solutions without compromising on quality. Their recognition from Dubai Government speaks volumes.",
+    author: "Khalid Hassan",
+    role: "Operations Director",
+    company: "Middle East Manufacturing LLC"
   }
 ];
 
 export const stats = [
-  { value: "40%", label: "Faster Delivery" },
-  { value: "99.8%", label: "On-Time Rate" },
-  { value: "150+", label: "Countries" },
-  { value: "24/7", label: "AI Support" }
+  { value: "22+", label: "Years in Business" },
+  { value: "150+", label: "Countries Served" },
+  { value: "10K+", label: "Shipments/Year" },
+  { value: "24/7", label: "Customer Support" }
 ];
 
 export const features = [
   {
-    title: "Intelligent Automation",
-    description: "Our AI engine handles everything from documentation to route planning, freeing your team to focus on strategy."
+    title: "Government Recognized",
+    description: "Full recognition from Dubai Government, local bodies, and chambers ensuring compliance and seamless operations in UAE and beyond."
+  },
+  {
+    title: "Customer Satisfaction",
+    description: "Our focus is on invaluable customer satisfaction through personalized service, timely delivery, and cost-effective logistics solutions."
   },
   {
     title: "Global Network",
-    description: "Access to 150+ countries with integrated customs, warehousing, and last-mile delivery partnerships."
-  },
-  {
-    title: "Carbon Neutral",
-    description: "Every shipment is carbon-offset automatically. We're committed to sustainable logistics for a better tomorrow."
+    description: "Comprehensive global transportation network connecting suppliers to end customers worldwide with reliable freight forwarding services."
   }
 ];
