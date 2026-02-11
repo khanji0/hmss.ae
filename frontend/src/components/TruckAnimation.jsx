@@ -9,7 +9,6 @@ const TruckAnimation = () => {
 
     const ctx = canvas.getContext('2d');
     let animationFrameId;
-    let trucks = [];
 
     // Set canvas size
     const resizeCanvas = () => {
@@ -19,140 +18,109 @@ const TruckAnimation = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Truck class
-    class Truck {
-      constructor(x, y, speed, size, direction) {
-        this.x = x;
+    // Crane class with container dropping animation
+    class Crane {
+      constructor(x, y) {
+        this.x = x; // Base position
         this.y = y;
-        this.speed = speed;
-        this.size = size;
-        this.direction = direction; // 1 for right, -1 for left
-        this.opacity = 0.15 + Math.random() * 0.1; // Subtle, professional opacity
-        this.wheelRotation = 0;
+        this.craneHeight = 200; // Taller for better visibility
+        this.boomLength = 150; // Longer boom
+        this.boomAngle = -Math.PI / 4; // 45 degrees down
+        this.containerY = y + 50; // Starting position of container
+        this.dropSpeed = 0;
+        this.isDropping = false;
+        this.dropStartY = y + 50;
+        this.dropTargetY = y + 250; // Drop target
+        this.resetTimer = 0;
+        this.opacity = 0.4; // More visible
       }
 
       update() {
-        this.x += this.speed * this.direction;
-        this.wheelRotation += this.speed * 0.1;
-
-        // Reset position when off screen
-        if (this.direction === 1 && this.x > canvas.width + 200) {
-          this.x = -200;
-          this.y = Math.random() * canvas.height;
-        } else if (this.direction === -1 && this.x < -200) {
-          this.x = canvas.width + 200;
-          this.y = Math.random() * canvas.height;
+        // Animate container dropping
+        if (this.isDropping) {
+          this.dropSpeed += 0.3; // Gravity acceleration
+          this.containerY += this.dropSpeed;
+          
+          // When container reaches target, reset
+          if (this.containerY >= this.dropTargetY) {
+            this.resetTimer++;
+            if (this.resetTimer > 90) { // Wait 1.5 seconds before reset
+              this.reset();
+            }
+          }
+        } else {
+          // Slowly lower container before dropping
+          if (this.containerY < this.dropStartY + 30) {
+            this.containerY += 0.2;
+          } else {
+            this.isDropping = true;
+            this.dropSpeed = 0;
+          }
         }
+      }
+
+      reset() {
+        this.containerY = this.dropStartY;
+        this.dropSpeed = 0;
+        this.isDropping = false;
+        this.resetTimer = 0;
+        this.containerPickedUp = false;
       }
 
       draw() {
         ctx.save();
         ctx.globalAlpha = this.opacity;
-        ctx.translate(this.x, this.y);
-
-        // Draw truck body with professional styling
-        ctx.fillStyle = '#FFFFFF';
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 1.5;
-        
-        // Main trailer/container
-        ctx.fillRect(-this.size * 0.8, -this.size * 0.15, this.size * 1.6, this.size * 0.3);
-        ctx.strokeRect(-this.size * 0.8, -this.size * 0.15, this.size * 1.6, this.size * 0.3);
-        
-        // Cab
-        ctx.fillRect(-this.size * 0.8, -this.size * 0.15, this.size * 0.4, this.size * 0.3);
-        ctx.strokeRect(-this.size * 0.8, -this.size * 0.15, this.size * 0.4, this.size * 0.3);
-        
-        // Container details (vertical lines for professional look)
-        ctx.lineWidth = 1;
-        for (let i = 0; i < 3; i++) {
-          ctx.beginPath();
-          ctx.moveTo(-this.size * 0.8 + (this.size * 1.6 / 4) * (i + 1), -this.size * 0.15);
-          ctx.lineTo(-this.size * 0.8 + (this.size * 1.6 / 4) * (i + 1), this.size * 0.15);
-          ctx.stroke();
-        }
-        
-        // Horizontal lines on container
-        ctx.beginPath();
-        ctx.moveTo(-this.size * 0.8, 0);
-        ctx.lineTo(this.size * 0.8, 0);
-        ctx.stroke();
-
-        // Wheels
-        ctx.fillStyle = '#FFFFFF';
-        const wheelY = this.size * 0.15;
-        const wheelRadius = this.size * 0.08;
-        
-        // Front wheels (cab)
-        this.drawWheel(-this.size * 0.5, wheelY, wheelRadius);
-        this.drawWheel(-this.size * 0.5, -wheelY, wheelRadius);
-        
-        // Back wheels (trailer - dual axles)
-        this.drawWheel(this.size * 0.3, wheelY, wheelRadius);
-        this.drawWheel(this.size * 0.3, -wheelY, wheelRadius);
-        this.drawWheel(this.size * 0.6, wheelY, wheelRadius);
-        this.drawWheel(this.size * 0.6, -wheelY, wheelRadius);
-
-        ctx.restore();
-      }
-
-      drawWheel(x, y, radius) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(this.wheelRotation);
-        
-        // Wheel rim (outer ring)
-        ctx.strokeStyle = '#FFFFFF';
+        ctx.strokeStyle = '#000000';
+        ctx.fillStyle = '#000000';
         ctx.lineWidth = 2;
+
+        // Crane base (vertical tower)
         ctx.beginPath();
-        ctx.arc(0, 0, radius, 0, Math.PI * 2);
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x, this.y - this.craneHeight);
         ctx.stroke();
+
+        // Crane boom (horizontal arm)
+        const boomEndX = this.x + Math.cos(this.boomAngle) * this.boomLength;
+        const boomEndY = (this.y - this.craneHeight) + Math.sin(this.boomAngle) * this.boomLength;
         
-        // Inner wheel circle
         ctx.beginPath();
-        ctx.arc(0, 0, radius * 0.6, 0, Math.PI * 2);
+        ctx.moveTo(this.x, this.y - this.craneHeight);
+        ctx.lineTo(boomEndX, boomEndY);
         ctx.stroke();
+
+        // Cable from boom end to container
+        ctx.beginPath();
+        ctx.moveTo(boomEndX, boomEndY);
+        ctx.lineTo(boomEndX, this.containerY);
+        ctx.stroke();
+
+        // Container hanging from cable - bright blue (famous shipping container color), rectangular, big
+        const containerWidth = 140; // Wider rectangle for better visibility
+        const containerHeight = 60; // Taller but still rectangular
+        const containerX = boomEndX - containerWidth / 2;
         
-        // Wheel spokes
-        ctx.lineWidth = 1;
-        for (let i = 0; i < 6; i++) {
-          ctx.beginPath();
-          ctx.moveTo(0, 0);
-          ctx.lineTo(radius * 0.6, 0);
-          ctx.stroke();
-          ctx.rotate((Math.PI * 2) / 6);
-        }
-        
+        // Container body - solid orange, no lines
+        ctx.fillStyle = '#FF6600'; // Orange color
+        ctx.fillRect(containerX, this.containerY, containerWidth, containerHeight);
+
+
         ctx.restore();
       }
     }
 
-    // Initialize trucks
-    const initTrucks = () => {
-      trucks = [];
-      const truckCount = Math.floor((canvas.width * canvas.height) / 150000); // Responsive count
-      
-      for (let i = 0; i < truckCount; i++) {
-        const direction = Math.random() > 0.5 ? 1 : -1;
-        const x = direction === 1 ? -200 : canvas.width + 200;
-        const y = Math.random() * canvas.height;
-        const speed = 0.5 + Math.random() * 1;
-        const size = 40 + Math.random() * 60;
-        
-        trucks.push(new Truck(x, y, speed, size, direction));
-      }
-    };
-
-    initTrucks();
+    // Initialize crane - positioned on the left, before stats section
+    const crane = new Crane(canvas.width * 0.15, canvas.height * 0.25);
 
     // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      trucks.forEach(truck => {
-        truck.update();
-        truck.draw();
-      });
+      // Update crane
+      crane.update();
+      
+      // Draw crane
+      crane.draw();
 
       animationFrameId = requestAnimationFrame(animate);
     };

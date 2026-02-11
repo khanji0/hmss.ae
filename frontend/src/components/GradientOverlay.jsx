@@ -24,12 +24,12 @@ const GradientOverlay = () => {
         gradientRef.current.style.background = `
           radial-gradient(
             600px circle at ${mousePos.current.x}% ${mousePos.current.y}%,
-            rgba(255, 255, 255, 0.05),
+            rgba(0, 0, 0, 0.03),
             transparent 40%
           ),
           radial-gradient(
             800px circle at ${100 - mousePos.current.x}% ${100 - mousePos.current.y}%,
-            rgba(255, 255, 255, 0.03),
+            rgba(0, 0, 0, 0.02),
             transparent 40%
           )
         `;

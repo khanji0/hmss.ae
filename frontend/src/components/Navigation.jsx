@@ -24,7 +24,7 @@ const Navigation = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+        isScrolled ? 'bg-white/80 backdrop-blur-xl border-b border-black/10' : 'bg-transparent'
       }`}
       style={{ height: '80px' }}
     >
@@ -33,7 +33,7 @@ const Navigation = () => {
         <div className="flex items-center">
           <span 
             className="text-2xl font-semibold tracking-tight"
-            style={{ color: '#FFFFFF' }}
+            style={{ color: '#000000' }}
           >
             HUSSAIN MURAD
           </span>
@@ -43,28 +43,19 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-8">
           <button 
             onClick={() => scrollToSection('services')}
-            className="transition-colors duration-300 text-lg font-normal"
-            style={{ color: '#8B6F47' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
+            className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Services
           </button>
           <button 
             onClick={() => scrollToSection('technology')}
-            className="transition-colors duration-300 text-lg font-normal"
-            style={{ color: '#8B6F47' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
+            className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Technology
           </button>
           <button 
             onClick={() => scrollToSection('clients')}
-            className="transition-colors duration-300 text-lg font-normal"
-            style={{ color: '#8B6F47' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
+            className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Clients
           </button>
@@ -72,8 +63,8 @@ const Navigation = () => {
             onClick={() => scrollToSection('contact')}
             className="btn-primary"
             style={{
-              background: '#FFFFFF',
-              color: '#000000',
+              background: '#000000',
+              color: '#FFFFFF',
               border: 'none',
               borderRadius: '0px',
               padding: '12px 24px',
@@ -84,10 +75,10 @@ const Navigation = () => {
               minHeight: '48px'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#F0F0F0';
+              e.currentTarget.style.background = '#333333';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#FFFFFF';
+              e.currentTarget.style.background = '#000000';
             }}
           >
             Get Started
@@ -96,7 +87,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-white"
+          className="md:hidden text-black"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -105,26 +96,23 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10">
+        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-black/10">
           <div className="flex flex-col px-[7.6923%] py-6 gap-4">
             <button 
               onClick={() => scrollToSection('services')}
-              className="transition-colors duration-300 text-lg font-normal text-left"
-              style={{ color: '#8B6F47' }}
+              className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('technology')}
-              className="transition-colors duration-300 text-lg font-normal text-left"
-              style={{ color: '#8B6F47' }}
+              className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Technology
             </button>
             <button 
               onClick={() => scrollToSection('clients')}
-              className="transition-colors duration-300 text-lg font-normal text-left"
-              style={{ color: '#8B6F47' }}
+              className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Clients
             </button>
@@ -132,8 +120,8 @@ const Navigation = () => {
               onClick={() => scrollToSection('contact')}
               className="text-left"
               style={{
-                background: '#FFFFFF',
-                color: '#000000',
+                background: '#000000',
+                color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '0px',
                 padding: '12px 24px',

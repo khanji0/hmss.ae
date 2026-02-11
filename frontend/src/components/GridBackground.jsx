@@ -42,7 +42,7 @@ const GridBackground = () => {
       mousePos.current.y += (targetMousePos.current.y - mousePos.current.y) * 0.1;
 
       // Draw vertical lines
-      ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`;
+      ctx.strokeStyle = `rgba(0, 0, 0, ${lineOpacity})`;
       ctx.lineWidth = 1;
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath();
@@ -60,7 +60,7 @@ const GridBackground = () => {
       }
 
       // Draw dots at intersections with mouse proximity effect
-      ctx.fillStyle = `rgba(255, 255, 255, ${dotOpacity})`; // White
+      ctx.fillStyle = `rgba(0, 0, 0, ${dotOpacity})`; // Black
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           // Calculate distance from mouse
@@ -77,9 +77,9 @@ const GridBackground = () => {
             const factor = 1 - distance / maxDistance;
             radius = dotRadius + factor * 2;
             opacity = dotOpacity + factor * 0.4;
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`; // White
+            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`; // Black
           } else {
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`; // White
+            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`; // Black
           }
 
           ctx.beginPath();

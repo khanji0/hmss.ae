@@ -52,7 +52,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen relative overflow-hidden">
+    <div className="bg-white text-black min-h-screen relative overflow-hidden">
       <TruckAnimation />
       <GridBackground />
       <GradientOverlay />
@@ -72,19 +72,19 @@ const Landing = () => {
               className="leading-[1.1] tracking-tight mb-8"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
-              <span style={{ color: '#FFFFFF' }}>End-to-End</span>
+              <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
-              <span style={{ color: '#8B6F47', fontWeight: 'bold' }}>Freight Solutions</span>
+              <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/90 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: '#FFFFFF',
-                  color: '#000000',
+                  background: '#000000',
+                  color: '#FFFFFF',
                   border: 'none',
                   borderRadius: '0px',
                   padding: '16px 32px',
@@ -98,11 +98,11 @@ const Landing = () => {
                   gap: '12px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#F0F0F0';
+                  e.currentTarget.style.background = '#333333';
                   e.currentTarget.style.transform = 'scale(1.05)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.background = '#000000';
                   e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
@@ -112,9 +112,9 @@ const Landing = () => {
               <button
                 onClick={() => document.getElementById('technology').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#FFFFFF',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  background: 'rgba(0, 0, 0, 0.05)',
+                  color: '#000000',
+                  border: '1px solid rgba(0, 0, 0, 0.2)',
                   borderRadius: '0px',
                   padding: '16px 32px',
                   fontSize: '18px',
@@ -124,12 +124,12 @@ const Landing = () => {
                   minHeight: '56px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.4)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
                 }}
               >
                 Explore Technology
@@ -143,11 +143,11 @@ const Landing = () => {
               <div key={index} className="text-center">
                 <div 
                   className="text-5xl md:text-6xl font-semibold mb-2"
-                  style={{ color: '#8B6F47' }}
+                  style={{ color: '#000000' }}
                 >
                   <AnimatedCounter value={stat.value} duration={2000} />
                 </div>
-                <div className="text-lg" style={{ color: '#8B6F47', opacity: 0.8 }}>{stat.label}</div>
+                <div className="text-lg text-black/80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -165,10 +165,10 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#FFFFFF' }}>Comprehensive </span>
-              <span style={{ color: '#8B6F47' }}>Logistics Solutions</span>
+              <span style={{ color: '#000000' }}>Comprehensive </span>
+              <span style={{ color: '#000000' }}>Logistics Solutions</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl">
+            <p className="text-xl text-black/80 max-w-2xl">
               Established in 2002 with full recognition from Dubai Government, local bodies, and chambers. Providing customized freight solutions focused on invaluable customer satisfaction.
             </p>
           </div>
@@ -179,7 +179,7 @@ const Landing = () => {
                 key={service.id}
                 id={`service-${service.id}`}
                 data-animate
-                className={`border border-white/20 p-12 transition-all duration-700 hover:border-white/50 hover:bg-white/5 ${
+                className={`border border-black/20 p-12 transition-all duration-700 hover:border-black/50 hover:bg-black/5 ${
                   isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
@@ -189,16 +189,16 @@ const Landing = () => {
                 <div 
                   className="text-6xl font-bold mb-6"
                   style={{
-                    color: '#8B6F47',
+                    color: '#000000',
                     opacity: 0.3
                   }}
                 >
                   {service.number}
                 </div>
-                <h3 className="text-3xl font-semibold mb-4" style={{ color: '#8B6F47' }}>
+                <h3 className="text-3xl font-semibold mb-4 text-black">
                   {service.title}
                 </h3>
-                <p className="text-lg text-white/80 leading-relaxed">
+                <p className="text-lg text-black/80 leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -208,7 +208,7 @@ const Landing = () => {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
+      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
@@ -218,10 +218,10 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#FFFFFF' }}>Trusted Since </span>
-              <span style={{ color: '#8B6F47' }}>2002</span>
+              <span style={{ color: '#000000' }}>Trusted Since </span>
+              <span style={{ color: '#000000' }}>2002</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-black/80 max-w-3xl mx-auto">
               HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
             </p>
           </div>
@@ -242,13 +242,13 @@ const Landing = () => {
                 <div className="mb-6">
                   <CheckCircle2 
                     size={48} 
-                    style={{ color: '#8B6F47' }} 
+                    style={{ color: '#000000' }} 
                   />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4" style={{ color: '#8B6F47' }}>
+                <h3 className="text-2xl font-semibold mb-4 text-black">
                   {feature.title}
                 </h3>
-                <p className="text-lg text-white/80 leading-relaxed">
+                <p className="text-lg text-black/80 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -268,8 +268,8 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#FFFFFF' }}>Trusted by </span>
-              <span style={{ color: '#8B6F47' }}>Industry Leaders</span>
+              <span style={{ color: '#000000' }}>Trusted by </span>
+              <span style={{ color: '#000000' }}>Industry Leaders</span>
             </h2>
           </div>
 
@@ -279,14 +279,14 @@ const Landing = () => {
                 key={index}
                 id={`client-${index}`}
                 data-animate
-                className={`border border-white/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-white/50 hover:bg-white/5 ${
+                className={`border border-black/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-black/50 hover:bg-black/5 ${
                   isVisible[`client-${index}`] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <span className="text-2xl font-bold text-white/50">{client.logo}</span>
+                <span className="text-2xl font-bold text-black/50">{client.logo}</span>
               </div>
             ))}
           </div>
@@ -298,20 +298,20 @@ const Landing = () => {
                 key={testimonial.id}
                 id={`testimonial-${testimonial.id}`}
                 data-animate
-                className={`border border-white/20 p-8 transition-all duration-700 ${
+                className={`border border-black/20 p-8 transition-all duration-700 ${
                   isVisible[`testimonial-${testimonial.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
                   transitionDelay: `${index * 150}ms`
                 }}
               >
-                <p className="text-lg text-white/90 mb-8 leading-relaxed italic">
+                <p className="text-lg text-black/90 mb-8 leading-relaxed italic">
                   "{testimonial.quote}"
                 </p>
                 <div>
-                  <div className="text-white font-semibold">{testimonial.author}</div>
-                  <div className="text-white/70 text-sm">{testimonial.role}</div>
-                  <div className="text-white/50 text-sm">{testimonial.company}</div>
+                  <div className="text-black font-semibold">{testimonial.author}</div>
+                  <div className="text-black/70 text-sm">{testimonial.role}</div>
+                  <div className="text-black/50 text-sm">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -320,7 +320,7 @@ const Landing = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
+      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
           <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"
@@ -330,10 +330,10 @@ const Landing = () => {
             }`}
           >
             <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#FFFFFF' }}>Let's </span>
-              <span style={{ color: '#8B6F47' }}>Connect</span>
+              <span style={{ color: '#000000' }}>Let's </span>
+              <span style={{ color: '#000000' }}>Connect</span>
             </h2>
-            <p className="text-xl text-white/80">
+            <p className="text-xl text-black/80">
               Ready to transform your logistics operations? Get in touch with our team.
             </p>
           </div>
@@ -355,19 +355,19 @@ const Landing = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#FFFFFF';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                 />
               </div>
@@ -379,19 +379,19 @@ const Landing = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#FFFFFF';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
                   }}
                 />
               </div>
@@ -403,7 +403,7 @@ const Landing = () => {
                 placeholder="Company Name"
                 value={formData.company}
                 onChange={handleChange}
-                className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg focus:border-white transition-colors"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-black transition-colors"
                 style={{ borderRadius: '0px' }}
               />
             </div>
@@ -415,15 +415,15 @@ const Landing = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="bg-white/10 border-white/30 text-white placeholder:text-white/50 text-lg focus:border-white transition-colors resize-none"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 text-lg focus:border-black transition-colors resize-none"
                 style={{ borderRadius: '0px' }}
               />
             </div>
             <button
               type="submit"
               style={{
-                background: '#FFFFFF',
-                color: '#000000',
+                background: '#000000',
+                color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '0px',
                 padding: '16px 32px',
@@ -439,11 +439,11 @@ const Landing = () => {
                 gap: '12px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#F0F0F0';
+                e.currentTarget.style.background = '#333333';
                 e.currentTarget.style.transform = 'scale(1.02)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#FFFFFF';
+                e.currentTarget.style.background = '#000000';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
@@ -455,19 +455,19 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/20 py-12 px-[7.6923%]">
+      <footer className="border-t border-black/20 py-12 px-[7.6923%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <div 
                 className="text-2xl font-semibold mb-2"
-                style={{ color: '#FFFFFF' }}
+                style={{ color: '#000000' }}
               >
                 HUSSAIN MURAD SHIPPING SERVICES LLC
               </div>
-              <div className="text-white/70">Established 2002 | Dubai, UAE</div>
+              <div className="text-black/70">Established 2002 | Dubai, UAE</div>
             </div>
-            <div className="text-white/60 text-center md:text-right">
+            <div className="text-black/60 text-center md:text-right">
               © 2025 Hussain Murad Shipping Services LLC. All rights reserved.
             </div>
           </div>
