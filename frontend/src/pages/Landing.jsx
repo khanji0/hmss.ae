@@ -134,7 +134,7 @@ const Landing = () => {
                 Explore Technology
               </button>
             </div>
-          </div>
+            </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 max-w-5xl mx-auto">
