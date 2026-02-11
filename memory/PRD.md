@@ -7,7 +7,7 @@
 Create a modern enterprise SaaS logistics website with a futuristic AI technology style for **Hussain Murad Shipping Services**, a freight forwarding business located in Dubai, UAE.
 
 ### Design Requirements:
-- **Style**: Ultra minimal, dark theme, black background, white typography, subtle cyan-green accents (#00FFD1)
+- **Style**: Ultra minimal, white background, black typography, subtle cyan-green accents (#00FFD1)
 - **Aesthetic**: Apple / Tesla / Palantir inspired, industrial logistics theme
 - **Typography**: Modern geometric sans serif, very large hero text (100px+), bold headlines
 - **Layout**: Full screen hero, sticky navigation, large storytelling sections, numbered benefits, client logos, testimonials, contact form
@@ -24,7 +24,7 @@ Create a modern enterprise SaaS logistics website with a futuristic AI technolog
 ---
 
 ## Core Requirements (Static)
-1. ✅ Ultra-minimal dark theme design (#000000 background)
+1. ✅ Ultra-minimal light theme design (#FFFFFF background with black text)
 2. ✅ Futuristic enterprise aesthetic with cyan-green accents (#00FFD1)
 3. ✅ Full-screen hero section with large typography (120px)
 4. ✅ Sticky navigation with smooth scrolling
@@ -62,9 +62,9 @@ Create a modern enterprise SaaS logistics website with a futuristic AI technolog
 7. ✅ Footer - Company name and location
 
 **Design Implementation:**
-- ✅ Black background (#000000) throughout
+- ✅ White background (#FFFFFF) throughout with gray sections (#F9FAFB)
 - ✅ Cyan-green accent color (#00FFD1) for CTAs and highlights
-- ✅ White typography with high contrast
+- ✅ Black typography with high contrast
 - ✅ Sharp-cornered buttons (border-radius: 0px)
 - ✅ Large typography (clamp 48px-120px for hero)
 - ✅ Smooth scroll animations with IntersectionObserver
