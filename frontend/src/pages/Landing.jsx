@@ -48,7 +48,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-white text-black min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
@@ -61,14 +61,14 @@ const Landing = () => {
             }}
           >
             <h1 
-              className="font-semibold leading-[1.1] tracking-tight text-white mb-8"
+              className="font-semibold leading-[1.1] tracking-tight text-black mb-8"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
               The Future of
               <br />
               <span style={{ color: '#00FFD1' }}>Freight Forwarding</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/85 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/85 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -136,7 +136,7 @@ const Landing = () => {
                 <div className="text-5xl md:text-6xl font-semibold text-[#00FFD1] mb-2">
                   {stat.value}
                 </div>
-                <div className="text-white/60 text-lg">{stat.label}</div>
+                <div className="text-black/60 text-lg">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -153,10 +153,10 @@ const Landing = () => {
               isVisible['services-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
               Intelligent Logistics
             </h2>
-            <p className="text-xl text-white/70 max-w-2xl">
+            <p className="text-xl text-black/70 max-w-2xl">
               Powered by advanced AI and automation, our platform delivers unprecedented efficiency and reliability.
             </p>
           </div>
@@ -167,7 +167,7 @@ const Landing = () => {
                 key={service.id}
                 id={`service-${service.id}`}
                 data-animate
-                className={`border border-white/20 p-12 transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-white/5 ${
+                className={`border border-black/20 p-12 transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-black/5 ${
                   isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
@@ -177,10 +177,10 @@ const Landing = () => {
                 <div className="text-6xl font-bold text-[#00FFD1]/30 mb-6">
                   {service.number}
                 </div>
-                <h3 className="text-3xl font-semibold text-white mb-4">
+                <h3 className="text-3xl font-semibold text-black mb-4">
                   {service.title}
                 </h3>
-                <p className="text-lg text-white/70 leading-relaxed">
+                <p className="text-lg text-black/70 leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -190,7 +190,7 @@ const Landing = () => {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-[#121212]">
+      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50">
         <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
@@ -199,10 +199,10 @@ const Landing = () => {
               isVisible['tech-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
               Built for Tomorrow
             </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-xl text-black/70 max-w-3xl mx-auto">
               We combine cutting-edge technology with decades of logistics expertise to create solutions that don't just meet today's demands—they anticipate tomorrow's challenges.
             </p>
           </div>
@@ -223,10 +223,10 @@ const Landing = () => {
                 <div className="mb-6">
                   <CheckCircle2 size={48} className="text-[#00FFD1]" />
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">
+                <h3 className="text-2xl font-semibold text-black mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-lg text-white/70 leading-relaxed">
+                <p className="text-lg text-black/70 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -245,7 +245,7 @@ const Landing = () => {
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
               Trusted by Industry Leaders
             </h2>
           </div>
@@ -256,14 +256,14 @@ const Landing = () => {
                 key={index}
                 id={`client-${index}`}
                 data-animate
-                className={`border border-white/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-white/5 ${
+                className={`border border-black/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-black/5 ${
                   isVisible[`client-${index}`] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <span className="text-2xl font-bold text-white/40">{client.logo}</span>
+                <span className="text-2xl font-bold text-black/40">{client.logo}</span>
               </div>
             ))}
           </div>
@@ -275,20 +275,20 @@ const Landing = () => {
                 key={testimonial.id}
                 id={`testimonial-${testimonial.id}`}
                 data-animate
-                className={`border border-white/20 p-8 transition-all duration-700 ${
+                className={`border border-black/20 p-8 transition-all duration-700 ${
                   isVisible[`testimonial-${testimonial.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
                   transitionDelay: `${index * 150}ms`
                 }}
               >
-                <p className="text-lg text-white/85 mb-8 leading-relaxed italic">
+                <p className="text-lg text-black/85 mb-8 leading-relaxed italic">
                   "{testimonial.quote}"
                 </p>
                 <div>
-                  <div className="text-white font-semibold">{testimonial.author}</div>
-                  <div className="text-white/60 text-sm">{testimonial.role}</div>
-                  <div className="text-white/40 text-sm">{testimonial.company}</div>
+                  <div className="text-black font-semibold">{testimonial.author}</div>
+                  <div className="text-black/60 text-sm">{testimonial.role}</div>
+                  <div className="text-black/40 text-sm">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -297,7 +297,7 @@ const Landing = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-[#121212]">
+      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"
@@ -306,10 +306,10 @@ const Landing = () => {
               isVisible['contact-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
               Let's Connect
             </h2>
-            <p className="text-xl text-white/70">
+            <p className="text-xl text-black/70">
               Ready to transform your logistics operations? Get in touch with our team.
             </p>
           </div>
@@ -331,7 +331,7 @@ const Landing = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-black border-white/20 text-white placeholder:text-white/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
                   style={{ borderRadius: '0px' }}
                 />
               </div>
@@ -343,7 +343,7 @@ const Landing = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-black border-white/20 text-white placeholder:text-white/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
                   style={{ borderRadius: '0px' }}
                 />
               </div>
@@ -355,7 +355,7 @@ const Landing = () => {
                 placeholder="Company Name"
                 value={formData.company}
                 onChange={handleChange}
-                className="bg-black border-white/20 text-white placeholder:text-white/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
                 style={{ borderRadius: '0px' }}
               />
             </div>
@@ -367,7 +367,7 @@ const Landing = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="bg-black border-white/20 text-white placeholder:text-white/40 text-lg focus:border-[#00FFD1] transition-colors resize-none"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 text-lg focus:border-[#00FFD1] transition-colors resize-none"
                 style={{ borderRadius: '0px' }}
               />
             </div>
@@ -407,14 +407,14 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/20 py-12 px-[7.6923%]">
+      <footer className="border-t border-black/20 py-12 px-[7.6923%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <div className="text-2xl font-semibold text-white mb-2">HUSSAIN MURAD</div>
-              <div className="text-white/60">Dubai, UAE</div>
+              <div className="text-2xl font-semibold text-black mb-2">HUSSAIN MURAD</div>
+              <div className="text-black/60">Dubai, UAE</div>
             </div>
-            <div className="text-white/40 text-center md:text-right">
+            <div className="text-black/40 text-center md:text-right">
               © 2025 Hussain Murad Shipping Services. All rights reserved.
             </div>
           </div>

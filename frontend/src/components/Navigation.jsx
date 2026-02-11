@@ -24,14 +24,14 @@ const Navigation = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+        isScrolled ? 'bg-white/80 backdrop-blur-xl border-b border-black/10' : 'bg-transparent'
       }`}
       style={{ height: '80px' }}
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <span className="text-2xl font-semibold tracking-tight text-white">
+          <span className="text-2xl font-semibold tracking-tight text-black">
             HUSSAIN MURAD
           </span>
         </div>
@@ -40,19 +40,19 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-8">
           <button 
             onClick={() => scrollToSection('services')}
-            className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Services
           </button>
           <button 
             onClick={() => scrollToSection('technology')}
-            className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Technology
           </button>
           <button 
             onClick={() => scrollToSection('clients')}
-            className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal"
           >
             Clients
           </button>
@@ -78,7 +78,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-white"
+          className="md:hidden text-black"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -87,23 +87,23 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-black border-b border-white/10">
+        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white border-b border-black/10">
           <div className="flex flex-col px-[7.6923%] py-6 gap-4">
             <button 
               onClick={() => scrollToSection('services')}
-              className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('technology')}
-              className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Technology
             </button>
             <button 
               onClick={() => scrollToSection('clients')}
-              className="text-[#4D4D4D] hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="text-black/60 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Clients
             </button>
