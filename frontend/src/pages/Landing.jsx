@@ -308,6 +308,7 @@ const Landing = () => {
               </div>
             ))}
           </div>
+          </div>
         </ParallaxContainer>
       </section>
 
