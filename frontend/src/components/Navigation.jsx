@@ -43,19 +43,28 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-8">
           <button 
             onClick={() => scrollToSection('services')}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="transition-colors duration-300 text-lg font-normal"
+            style={{ color: '#8B6F47' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
           >
             Services
           </button>
           <button 
             onClick={() => scrollToSection('technology')}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="transition-colors duration-300 text-lg font-normal"
+            style={{ color: '#8B6F47' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
           >
             Technology
           </button>
           <button 
             onClick={() => scrollToSection('clients')}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal"
+            className="transition-colors duration-300 text-lg font-normal"
+            style={{ color: '#8B6F47' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#8B6F47'}
           >
             Clients
           </button>
@@ -100,19 +109,22 @@ const Navigation = () => {
           <div className="flex flex-col px-[7.6923%] py-6 gap-4">
             <button 
               onClick={() => scrollToSection('services')}
-              className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="transition-colors duration-300 text-lg font-normal text-left"
+              style={{ color: '#8B6F47' }}
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('technology')}
-              className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="transition-colors duration-300 text-lg font-normal text-left"
+              style={{ color: '#8B6F47' }}
             >
               Technology
             </button>
             <button 
               onClick={() => scrollToSection('clients')}
-              className="text-white/70 hover:text-white transition-colors duration-300 text-lg font-normal text-left"
+              className="transition-colors duration-300 text-lg font-normal text-left"
+              style={{ color: '#8B6F47' }}
             >
               Clients
             </button>

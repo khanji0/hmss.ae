@@ -3,8 +3,8 @@ import { ArrowRight, Package, Globe, Zap, TrendingUp, CheckCircle2, Send } from 
 import Navigation from '../components/Navigation';
 import GridBackground from '../components/GridBackground';
 import GradientOverlay from '../components/GradientOverlay';
-import ParallaxContainer from '../components/ParallaxContainer';
 import TruckAnimation from '../components/TruckAnimation';
+import AnimatedCounter from '../components/AnimatedCounter';
 import { companyInfo, services, clients, testimonials, stats, features } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -61,7 +61,6 @@ const Landing = () => {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-[7.6923%] pt-[80px]">
-        <ParallaxContainer speed={1}>
           <div className="max-w-[1400px] mx-auto text-center">
             <div 
               className="animate-fade-in"
@@ -70,12 +69,12 @@ const Landing = () => {
               }}
             >
             <h1 
-              className="font-semibold leading-[1.1] tracking-tight mb-8"
-              style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em', color: '#FFFFFF' }}
+              className="leading-[1.1] tracking-tight mb-8"
+              style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
-              <span>The Future of</span>
+              <span style={{ color: '#FFFFFF' }}>End-to-End</span>
               <br />
-              <span>Freight Forwarding</span>
+              <span style={{ color: '#8B6F47', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
@@ -144,21 +143,19 @@ const Landing = () => {
               <div key={index} className="text-center">
                 <div 
                   className="text-5xl md:text-6xl font-semibold mb-2"
-                  style={{ color: '#FFFFFF' }}
+                  style={{ color: '#8B6F47' }}
                 >
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} duration={2000} />
                 </div>
-                <div className="text-white/70 text-lg">{stat.label}</div>
+                <div className="text-lg" style={{ color: '#8B6F47', opacity: 0.8 }}>{stat.label}</div>
               </div>
             ))}
           </div>
           </div>
-        </ParallaxContainer>
       </section>
 
       {/* Services Section */}
       <section id="services" className="py-40 px-[7.6923%]">
-        <ParallaxContainer speed={0.5}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="services-title" 
@@ -167,9 +164,9 @@ const Landing = () => {
               isVisible['services-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
-              <span>Comprehensive </span>
-              <span>Logistics Solutions</span>
+            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+              <span style={{ color: '#FFFFFF' }}>Comprehensive </span>
+              <span style={{ color: '#8B6F47' }}>Logistics Solutions</span>
             </h2>
             <p className="text-xl text-white/80 max-w-2xl">
               Established in 2002 with full recognition from Dubai Government, local bodies, and chambers. Providing customized freight solutions focused on invaluable customer satisfaction.
@@ -192,13 +189,13 @@ const Landing = () => {
                 <div 
                   className="text-6xl font-bold mb-6"
                   style={{
-                    color: '#FFFFFF',
+                    color: '#8B6F47',
                     opacity: 0.3
                   }}
                 >
                   {service.number}
                 </div>
-                <h3 className="text-3xl font-semibold text-white mb-4">
+                <h3 className="text-3xl font-semibold mb-4" style={{ color: '#8B6F47' }}>
                   {service.title}
                 </h3>
                 <p className="text-lg text-white/80 leading-relaxed">
@@ -208,12 +205,10 @@ const Landing = () => {
             ))}
           </div>
           </div>
-        </ParallaxContainer>
       </section>
 
       {/* Technology Section */}
       <section id="technology" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
-        <ParallaxContainer speed={0.3}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
@@ -222,9 +217,9 @@ const Landing = () => {
               isVisible['tech-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
-              <span>Trusted Since </span>
-              <span>2002</span>
+            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+              <span style={{ color: '#FFFFFF' }}>Trusted Since </span>
+              <span style={{ color: '#8B6F47' }}>2002</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
@@ -247,10 +242,10 @@ const Landing = () => {
                 <div className="mb-6">
                   <CheckCircle2 
                     size={48} 
-                    style={{ color: '#FFFFFF' }} 
+                    style={{ color: '#8B6F47' }} 
                   />
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">
+                <h3 className="text-2xl font-semibold mb-4" style={{ color: '#8B6F47' }}>
                   {feature.title}
                 </h3>
                 <p className="text-lg text-white/80 leading-relaxed">
@@ -260,12 +255,10 @@ const Landing = () => {
             ))}
           </div>
           </div>
-        </ParallaxContainer>
       </section>
 
       {/* Clients Section */}
       <section id="clients" className="py-40 px-[7.6923%]">
-        <ParallaxContainer speed={0.4}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="clients-title"
@@ -274,9 +267,9 @@ const Landing = () => {
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
-              <span>Trusted by </span>
-              <span>Industry Leaders</span>
+            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+              <span style={{ color: '#FFFFFF' }}>Trusted by </span>
+              <span style={{ color: '#8B6F47' }}>Industry Leaders</span>
             </h2>
           </div>
 
@@ -324,12 +317,10 @@ const Landing = () => {
             ))}
           </div>
           </div>
-        </ParallaxContainer>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
-        <ParallaxContainer speed={0.3}>
           <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"
@@ -338,9 +329,9 @@ const Landing = () => {
               isVisible['contact-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
-              <span>Let's </span>
-              <span>Connect</span>
+            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+              <span style={{ color: '#FFFFFF' }}>Let's </span>
+              <span style={{ color: '#8B6F47' }}>Connect</span>
             </h2>
             <p className="text-xl text-white/80">
               Ready to transform your logistics operations? Get in touch with our team.
@@ -461,7 +452,6 @@ const Landing = () => {
             </button>
           </form>
           </div>
-        </ParallaxContainer>
       </section>
 
       {/* Footer */}
