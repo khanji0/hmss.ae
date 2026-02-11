@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import GridBackground from '../components/GridBackground';
 import GradientOverlay from '../components/GradientOverlay';
 import ParallaxContainer from '../components/ParallaxContainer';
+import TruckAnimation from '../components/TruckAnimation';
 import { companyInfo, services, clients, testimonials, stats, features } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -51,7 +52,8 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen relative overflow-hidden">
+    <div className="bg-black text-white min-h-screen relative overflow-hidden">
+      <TruckAnimation />
       <GridBackground />
       <GradientOverlay />
       <div className="relative" style={{ zIndex: 10 }}>
@@ -69,30 +71,21 @@ const Landing = () => {
             >
             <h1 
               className="font-semibold leading-[1.1] tracking-tight mb-8"
-              style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em', color: '#FFFFFF' }}
             >
-              <span style={{ color: '#000000' }}>The Future of</span>
+              <span>The Future of</span>
               <br />
-              <span 
-                style={{
-                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 50%, #000000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Freight Forwarding
-              </span>
+              <span>Freight Forwarding</span>
             </h1>
-            <p className="text-xl md:text-2xl text-black/85 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
-                  color: '#FFFFFF',
+                  background: '#FFFFFF',
+                  color: '#000000',
                   border: 'none',
                   borderRadius: '0px',
                   padding: '16px 32px',
@@ -106,11 +99,11 @@ const Landing = () => {
                   gap: '12px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #FF0000 0%, #00732F 100%)';
+                  e.currentTarget.style.background = '#F0F0F0';
                   e.currentTarget.style.transform = 'scale(1.05)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)';
+                  e.currentTarget.style.background = '#FFFFFF';
                   e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
@@ -120,9 +113,9 @@ const Landing = () => {
               <button
                 onClick={() => document.getElementById('technology').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: 'rgba(0, 0, 0, 0.05)',
-                  color: '#000000',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  color: '#FFFFFF',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
                   borderRadius: '0px',
                   padding: '16px 32px',
                   fontSize: '18px',
@@ -132,14 +125,12 @@ const Landing = () => {
                   minHeight: '56px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#000000';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#000000';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.05)';
-                  e.currentTarget.style.color = '#000000';
-                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
                 }}
               >
                 Explore Technology
@@ -153,16 +144,11 @@ const Landing = () => {
               <div key={index} className="text-center">
                 <div 
                   className="text-5xl md:text-6xl font-semibold mb-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}
+                  style={{ color: '#FFFFFF' }}
                 >
                   {stat.value}
                 </div>
-                <div className="text-black/60 text-lg">{stat.label}</div>
+                <div className="text-white/70 text-lg">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -181,20 +167,11 @@ const Landing = () => {
               isVisible['services-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#000000' }}>Comprehensive </span>
-              <span 
-                style={{
-                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Logistics Solutions
-              </span>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+              <span>Comprehensive </span>
+              <span>Logistics Solutions</span>
             </h2>
-            <p className="text-xl text-black/70 max-w-2xl">
+            <p className="text-xl text-white/80 max-w-2xl">
               Established in 2002 with full recognition from Dubai Government, local bodies, and chambers. Providing customized freight solutions focused on invaluable customer satisfaction.
             </p>
           </div>
@@ -205,7 +182,7 @@ const Landing = () => {
                 key={service.id}
                 id={`service-${service.id}`}
                 data-animate
-                className={`border border-black/20 p-12 transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-black/5 ${
+                className={`border border-white/20 p-12 transition-all duration-700 hover:border-white/50 hover:bg-white/5 ${
                   isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
@@ -215,19 +192,16 @@ const Landing = () => {
                 <div 
                   className="text-6xl font-bold mb-6"
                   style={{
-                    background: 'linear-gradient(135deg, #00732F 30%, #FF0000 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: '#FFFFFF',
                     opacity: 0.3
                   }}
                 >
                   {service.number}
                 </div>
-                <h3 className="text-3xl font-semibold text-black mb-4">
+                <h3 className="text-3xl font-semibold text-white mb-4">
                   {service.title}
                 </h3>
-                <p className="text-lg text-black/70 leading-relaxed">
+                <p className="text-lg text-white/80 leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -238,7 +212,7 @@ const Landing = () => {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+      <section id="technology" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
         <ParallaxContainer speed={0.3}>
           <div className="max-w-[1400px] mx-auto">
           <div 
@@ -248,20 +222,11 @@ const Landing = () => {
               isVisible['tech-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#000000' }}>Trusted Since </span>
-              <span 
-                style={{
-                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                2002
-              </span>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+              <span>Trusted Since </span>
+              <span>2002</span>
             </h2>
-            <p className="text-xl text-black/70 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
             </p>
           </div>
@@ -282,15 +247,13 @@ const Landing = () => {
                 <div className="mb-6">
                   <CheckCircle2 
                     size={48} 
-                    style={{ 
-                      color: index === 0 ? '#00732F' : index === 1 ? '#FF0000' : '#000000' 
-                    }} 
+                    style={{ color: '#FFFFFF' }} 
                   />
                 </div>
-                <h3 className="text-2xl font-semibold text-black mb-4">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-lg text-black/70 leading-relaxed">
+                <p className="text-lg text-white/80 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -311,18 +274,9 @@ const Landing = () => {
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#000000' }}>Trusted by </span>
-              <span 
-                style={{
-                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Industry Leaders
-              </span>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+              <span>Trusted by </span>
+              <span>Industry Leaders</span>
             </h2>
           </div>
 
@@ -332,14 +286,14 @@ const Landing = () => {
                 key={index}
                 id={`client-${index}`}
                 data-animate
-                className={`border border-black/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-[#00FFD1]/50 hover:bg-black/5 ${
+                className={`border border-white/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-white/50 hover:bg-white/5 ${
                   isVisible[`client-${index}`] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <span className="text-2xl font-bold text-black/40">{client.logo}</span>
+                <span className="text-2xl font-bold text-white/50">{client.logo}</span>
               </div>
             ))}
           </div>
@@ -351,20 +305,20 @@ const Landing = () => {
                 key={testimonial.id}
                 id={`testimonial-${testimonial.id}`}
                 data-animate
-                className={`border border-black/20 p-8 transition-all duration-700 ${
+                className={`border border-white/20 p-8 transition-all duration-700 ${
                   isVisible[`testimonial-${testimonial.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
                   transitionDelay: `${index * 150}ms`
                 }}
               >
-                <p className="text-lg text-black/85 mb-8 leading-relaxed italic">
+                <p className="text-lg text-white/90 mb-8 leading-relaxed italic">
                   "{testimonial.quote}"
                 </p>
                 <div>
-                  <div className="text-black font-semibold">{testimonial.author}</div>
-                  <div className="text-black/60 text-sm">{testimonial.role}</div>
-                  <div className="text-black/40 text-sm">{testimonial.company}</div>
+                  <div className="text-white font-semibold">{testimonial.author}</div>
+                  <div className="text-white/70 text-sm">{testimonial.role}</div>
+                  <div className="text-white/50 text-sm">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -374,7 +328,7 @@ const Landing = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+      <section id="contact" className="py-40 px-[7.6923%] bg-black/50 backdrop-blur-sm">
         <ParallaxContainer speed={0.3}>
           <div className="max-w-4xl mx-auto">
           <div 
@@ -384,20 +338,11 @@ const Landing = () => {
               isVisible['contact-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              <span style={{ color: '#000000' }}>Let's </span>
-              <span 
-                style={{
-                  background: 'linear-gradient(90deg, #00732F 0%, #FF0000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Connect
-              </span>
+            <h2 className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+              <span>Let's </span>
+              <span>Connect</span>
             </h2>
-            <p className="text-xl text-black/70">
+            <p className="text-xl text-white/80">
               Ready to transform your logistics operations? Get in touch with our team.
             </p>
           </div>
@@ -419,17 +364,19 @@ const Landing = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
-                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                    borderColor: 'rgba(255, 255, 255, 0.3)'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#00732F';
+                    e.currentTarget.style.borderColor = '#FFFFFF';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
                   }}
                 />
               </div>
@@ -441,17 +388,19 @@ const Landing = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
-                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                    borderColor: 'rgba(255, 255, 255, 0.3)'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#00732F';
+                    e.currentTarget.style.borderColor = '#FFFFFF';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
                   }}
                 />
               </div>
@@ -463,7 +412,7 @@ const Landing = () => {
                 placeholder="Company Name"
                 value={formData.company}
                 onChange={handleChange}
-                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-[#00FFD1] transition-colors"
+                className="bg-white/10 border-white/30 text-white placeholder:text-white/50 h-14 text-lg focus:border-white transition-colors"
                 style={{ borderRadius: '0px' }}
               />
             </div>
@@ -475,15 +424,15 @@ const Landing = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="bg-white border-black/20 text-black placeholder:text-black/40 text-lg focus:border-[#00FFD1] transition-colors resize-none"
+                className="bg-white/10 border-white/30 text-white placeholder:text-white/50 text-lg focus:border-white transition-colors resize-none"
                 style={{ borderRadius: '0px' }}
               />
             </div>
             <button
               type="submit"
               style={{
-                background: 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)',
-                color: '#FFFFFF',
+                background: '#FFFFFF',
+                color: '#000000',
                 border: 'none',
                 borderRadius: '0px',
                 padding: '16px 32px',
@@ -499,11 +448,11 @@ const Landing = () => {
                 gap: '12px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #FF0000 0%, #00732F 100%)';
+                e.currentTarget.style.background = '#F0F0F0';
                 e.currentTarget.style.transform = 'scale(1.02)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #00732F 0%, #FF0000 100%)';
+                e.currentTarget.style.background = '#FFFFFF';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
@@ -516,24 +465,19 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-black/20 py-12 px-[7.6923%]">
+      <footer className="border-t border-white/20 py-12 px-[7.6923%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <div 
                 className="text-2xl font-semibold mb-2"
-                style={{
-                  background: 'linear-gradient(135deg, #00732F 0%, #FF0000 50%, #000000 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
+                style={{ color: '#FFFFFF' }}
               >
                 HUSSAIN MURAD SHIPPING SERVICES LLC
               </div>
-              <div className="text-black/60">Established 2002 | Dubai, UAE</div>
+              <div className="text-white/70">Established 2002 | Dubai, UAE</div>
             </div>
-            <div className="text-black/40 text-center md:text-right">
+            <div className="text-white/60 text-center md:text-right">
               © 2025 Hussain Murad Shipping Services LLC. All rights reserved.
             </div>
           </div>

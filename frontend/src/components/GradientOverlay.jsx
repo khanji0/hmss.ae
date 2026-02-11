@@ -24,12 +24,12 @@ const GradientOverlay = () => {
         gradientRef.current.style.background = `
           radial-gradient(
             600px circle at ${mousePos.current.x}% ${mousePos.current.y}%,
-            rgba(0, 115, 47, 0.08),
+            rgba(255, 255, 255, 0.05),
             transparent 40%
           ),
           radial-gradient(
             800px circle at ${100 - mousePos.current.x}% ${100 - mousePos.current.y}%,
-            rgba(255, 0, 0, 0.04),
+            rgba(255, 255, 255, 0.03),
             transparent 40%
           )
         `;
@@ -49,7 +49,7 @@ const GradientOverlay = () => {
     <div
       ref={gradientRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 1 }}
+      style={{ zIndex: 2 }}
     />
   );
 };
