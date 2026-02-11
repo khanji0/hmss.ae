@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Package, Globe, Zap, TrendingUp, CheckCircle2, Send } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import GridBackground from '../components/GridBackground';
+import GradientOverlay from '../components/GradientOverlay';
+import ParallaxContainer from '../components/ParallaxContainer';
 import { companyInfo, services, clients, testimonials, stats, features } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -48,18 +51,22 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen">
-      <Navigation />
+    <div className="bg-white text-black min-h-screen relative overflow-hidden">
+      <GridBackground />
+      <GradientOverlay />
+      <div className="relative" style={{ zIndex: 10 }}>
+        <Navigation />
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-[7.6923%] pt-[80px]">
-        <div className="max-w-[1400px] mx-auto text-center">
-          <div 
-            className="animate-fade-in"
-            style={{
-              animation: 'fadeInUp 1s ease-out forwards'
-            }}
-          >
+        <ParallaxContainer speed={1}>
+          <div className="max-w-[1400px] mx-auto text-center">
+            <div 
+              className="animate-fade-in"
+              style={{
+                animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+              }}
+            >
             <h1 
               className="font-semibold leading-[1.1] tracking-tight text-black mb-8"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
@@ -145,7 +152,8 @@ const Landing = () => {
 
       {/* Services Section */}
       <section id="services" className="py-40 px-[7.6923%]">
-        <div className="max-w-[1400px] mx-auto">
+        <ParallaxContainer speed={0.5}>
+          <div className="max-w-[1400px] mx-auto">
           <div 
             id="services-title" 
             data-animate
@@ -186,12 +194,13 @@ const Landing = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ParallaxContainer>
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50">
-        <div className="max-w-[1400px] mx-auto">
+      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+        <ParallaxContainer speed={0.3}>
+          <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
             data-animate
@@ -232,12 +241,13 @@ const Landing = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ParallaxContainer>
       </section>
 
       {/* Clients Section */}
       <section id="clients" className="py-40 px-[7.6923%]">
-        <div className="max-w-[1400px] mx-auto">
+        <ParallaxContainer speed={0.4}>
+          <div className="max-w-[1400px] mx-auto">
           <div 
             id="clients-title"
             data-animate
@@ -293,12 +303,13 @@ const Landing = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ParallaxContainer>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50">
-        <div className="max-w-4xl mx-auto">
+      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+        <ParallaxContainer speed={0.3}>
+          <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"
             data-animate
@@ -403,7 +414,7 @@ const Landing = () => {
               <Send size={20} />
             </button>
           </form>
-        </div>
+        </ParallaxContainer>
       </section>
 
       {/* Footer */}
@@ -420,6 +431,7 @@ const Landing = () => {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
