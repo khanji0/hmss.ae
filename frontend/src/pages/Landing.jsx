@@ -111,9 +111,9 @@ const Landing = () => {
               <button
                 onClick={() => document.getElementById('technology').scrollIntoView({ behavior: 'smooth' })}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#FFFFFF',
-                  border: 'none',
+                  background: 'rgba(0, 0, 0, 0.05)',
+                  color: '#000000',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
                   borderRadius: '0px',
                   padding: '16px 32px',
                   fontSize: '18px',
@@ -123,12 +123,14 @@ const Landing = () => {
                   minHeight: '56px'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF';
-                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.background = '#000000';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = '#000000';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.05)';
+                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.1)';
                 }}
               >
                 Explore Technology
