@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import UAEFlag from './UAEFlag';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,12 +31,33 @@ const Navigation = () => {
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
-          <span 
-            className="text-2xl font-semibold tracking-tight"
-            style={{ color: '#000000' }}
+        <div className="flex items-center relative" style={{ minHeight: '80px', paddingLeft: '2px' }}>
+          {/* UAE Flag positioned behind text */}
+          <div 
+            className="absolute"
+            style={{ 
+              opacity: 0.22,
+              zIndex: 0,
+              left: '-8px',
+              top: '50%',
+              transform: 'translateY(-50%) scale(0.75)',
+              transition: 'opacity 0.3s ease'
+            }}
           >
-            HUSSAIN MURAD
+            <UAEFlag />
+          </div>
+          {/* Text on top */}
+          <span 
+            className="text-2xl font-bold tracking-wider relative z-10"
+            style={{ 
+              color: '#000000',
+              letterSpacing: '0.15em',
+              fontWeight: 700,
+              lineHeight: '1.1',
+              paddingLeft: '6px'
+            }}
+          >
+            HMSS
           </span>
         </div>
 

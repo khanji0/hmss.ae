@@ -1,7 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const TruckAnimation = () => {
   const canvasRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -116,11 +125,34 @@ const TruckAnimation = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update crane
-      crane.update();
+      // Calculate opacity based on scroll position
+      // Hero section is min-h-screen (100vh), fade out after scrolling past it
+      const heroHeight = window.innerHeight;
+      const fadeStart = heroHeight * 0.5; // Start fading at 50% of hero
+      const fadeEnd = heroHeight * 1.2; // Completely gone at 120% of hero
       
-      // Draw crane
-      crane.draw();
+      let scrollOpacity = 1;
+      if (scrollY > fadeStart) {
+        const fadeProgress = (scrollY - fadeStart) / (fadeEnd - fadeStart);
+        scrollOpacity = Math.max(0, 1 - fadeProgress);
+      }
+      
+      // Only draw if opacity is greater than 0
+      if (scrollOpacity > 0) {
+        // Update crane
+        crane.update();
+        
+        // Temporarily store original opacity
+        const originalOpacity = crane.opacity;
+        // Apply scroll-based opacity
+        crane.opacity = originalOpacity * scrollOpacity;
+        
+        // Draw crane
+        crane.draw();
+        
+        // Restore original opacity
+        crane.opacity = originalOpacity;
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -131,7 +163,7 @@ const TruckAnimation = () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [scrollY]);
 
   return (
     <canvas
