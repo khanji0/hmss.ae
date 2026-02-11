@@ -420,6 +420,7 @@ const Landing = () => {
               <Send size={20} />
             </button>
           </form>
+          </div>
         </ParallaxContainer>
       </section>
 
