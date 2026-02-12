@@ -11,6 +11,112 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { toast } from 'sonner';
 
+// Process Grid Background Component with Red Dots
+const ProcessGridBackground = () => {
+  const canvasRef = React.useRef(null);
+  const mousePos = React.useRef({ x: 0, y: 0 });
+  const targetMousePos = React.useRef({ x: 0, y: 0 });
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const section = canvas.closest('section');
+    if (!section) return;
+
+    const updateCanvasSize = () => {
+      const rect = section.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
+
+    updateCanvasSize();
+    window.addEventListener('resize', updateCanvasSize);
+
+    const handleMouseMove = (e) => {
+      const rect = section.getBoundingClientRect();
+      targetMousePos.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    };
+
+    section.addEventListener('mousemove', handleMouseMove);
+
+    const gridSize = 60;
+    const dotRadius = 1.5;
+    const lineOpacity = 0.05;
+    const dotOpacity = 0.3;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      mousePos.current.x += (targetMousePos.current.x - mousePos.current.x) * 0.1;
+      mousePos.current.y += (targetMousePos.current.y - mousePos.current.y) * 0.1;
+
+      // Draw vertical lines
+      ctx.strokeStyle = `rgba(255, 255, 255, ${lineOpacity})`;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+
+      // Draw horizontal lines
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      // Draw red dots at intersections
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        for (let y = 0; y < canvas.height; y += gridSize) {
+          const dx = mousePos.current.x - x;
+          const dy = mousePos.current.y - y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxDistance = 200;
+
+          let radius = dotRadius;
+          let opacity = dotOpacity;
+
+          if (distance < maxDistance) {
+            const factor = 1 - distance / maxDistance;
+            radius = dotRadius + factor * 2;
+            opacity = dotOpacity + factor * 0.4;
+          }
+
+          ctx.fillStyle = `rgba(255, 0, 0, ${opacity})`; // Red
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', updateCanvasSize);
+      section.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute top-0 left-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
+  );
+};
+
 const Landing = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -205,6 +311,220 @@ const Landing = () => {
             ))}
           </div>
           </div>
+      </section>
+
+      {/* Process Flow Section */}
+      <section id="process" className="py-40 px-[7.6923%] bg-black relative overflow-hidden">
+        {/* Grid Background with Red Dots */}
+        <ProcessGridBackground />
+        
+        {/* Grainy Texture Overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+            opacity: 0.08,
+            mixBlendMode: 'overlay',
+            zIndex: 1
+          }}
+        ></div>
+        
+        <div className="max-w-[1600px] mx-auto relative z-10">
+          <div 
+            id="process-title"
+            data-animate
+            className={`mb-24 transition-all duration-1000 ${
+              isVisible['process-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+              <span style={{ color: '#FFFFFF' }}>How It </span>
+              <span style={{ color: '#9CA3AF' }}>Works</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl">
+              Ready to Ship?
+            </p>
+          </div>
+
+          {/* Process Steps Grid */}
+          <div 
+            id="process-steps"
+            data-animate
+            className={`relative transition-all duration-1000 ${
+              isVisible['process-steps'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {/* Desktop Horizontal Flow */}
+            <div className="hidden lg:block">
+              <div className="process-scroll-container relative overflow-x-auto pb-8">
+                <div className="flex items-start gap-6 min-w-max px-4">
+                  {[
+                    { title: 'Request Your Shipment', desc: 'Submit your shipment details and requirements.' },
+                    { title: 'Cargo Pickup', desc: 'We collect your cargo directly from your location.' },
+                    { title: 'Customs Clearance & Transportation', desc: 'We handle customs processing and manage transportation.' },
+                    { title: 'Doorstep Delivery', desc: 'Your shipment is delivered safely to your destination.' }
+                  ].map((step, index) => (
+                    <React.Fragment key={index}>
+                      <div 
+                        className="flex-shrink-0 group"
+                        style={{
+                          width: '420px',
+                          animation: isVisible['process-steps'] 
+                            ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
+                            : 'none',
+                          animationDelay: `${index * 80}ms`,
+                          opacity: isVisible['process-steps'] ? undefined : 0
+                        }}
+                      >
+                        <div className="relative h-full">
+                          {/* Step Card with Black Background */}
+                          <div 
+                            className="border border-gray-800 bg-black p-10 transition-all duration-500 hover:border-gray-600 hover:scale-[1.02] relative overflow-hidden flex flex-col"
+                            style={{ minHeight: '420px', borderRadius: '0px' }}
+                          >
+                            {/* Grainy overlay on card */}
+                            <div 
+                              className="absolute inset-0 pointer-events-none"
+                              style={{
+                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E")`,
+                                opacity: 0.1,
+                                mixBlendMode: 'overlay'
+                              }}
+                            ></div>
+                            
+                            <div className="relative z-10 flex flex-col h-full">
+                              <div className="text-xs font-semibold text-gray-500 mb-5 tracking-wider uppercase">
+                                Step {index + 1}
+                              </div>
+                              <h3 
+                                className="text-white mb-6 leading-[1.1] tracking-tight"
+                                style={{ 
+                                  fontSize: 'clamp(32px, 4.5vw, 56px)', 
+                                  letterSpacing: '-0.02em',
+                                  fontWeight: 'bold',
+                                  lineHeight: '1.1'
+                                }}
+                              >
+                                {step.title}
+                              </h3>
+                              <p className="text-base text-gray-400 leading-relaxed mt-auto">
+                                {step.desc}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Simple Connector Arrow */}
+                      {index < 3 && (
+                        <div 
+                          className="flex-shrink-0 flex items-center justify-center relative"
+                          style={{
+                            width: '48px',
+                            height: '420px',
+                            animation: isVisible['process-steps'] 
+                              ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
+                              : 'none',
+                            animationDelay: `${index * 80 + 40}ms`,
+                            opacity: isVisible['process-steps'] ? undefined : 0
+                          }}
+                        >
+                          {/* Simple Arrow Line */}
+                          <div className="absolute left-0 right-0 h-[1px] bg-gray-800"></div>
+                          
+                          {/* Simple Arrow Head */}
+                          <svg 
+                            width="16" 
+                            height="16" 
+                            viewBox="0 0 16 16" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="absolute right-0"
+                          >
+                            <path 
+                              d="M2 8L12 8M12 8L9 5M12 8L9 11" 
+                              stroke="#9CA3AF" 
+                              strokeWidth="2" 
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile/Tablet Vertical Flow */}
+            <div className="lg:hidden space-y-8">
+              {[
+                { title: 'Request Your Shipment', desc: 'Submit your shipment details and requirements.' },
+                { title: 'Cargo Pickup', desc: 'We collect your cargo directly from your location.' },
+                { title: 'Customs Clearance & Transportation', desc: 'We handle customs processing and manage transportation.' },
+                { title: 'Doorstep Delivery', desc: 'Your shipment is delivered safely to your destination.' }
+              ].map((step, index) => (
+                <React.Fragment key={index}>
+                  <div 
+                    id={`process-step-${index}`}
+                    data-animate
+                    className={`transition-all duration-700 ${
+                      isVisible[`process-step-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 100}ms`
+                    }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-1 relative">
+                        {index < 3 && (
+                          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gray-800"></div>
+                        )}
+                        <div className="pl-0 pb-6 w-full">
+                          <div 
+                            className="border border-gray-800 bg-black p-8 transition-all duration-500 hover:border-gray-600 relative overflow-hidden flex flex-col"
+                            style={{ borderRadius: '0px', minHeight: '320px' }}
+                          >
+                            {/* Grainy overlay on card */}
+                            <div 
+                              className="absolute inset-0 pointer-events-none"
+                              style={{
+                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E")`,
+                                opacity: 0.1,
+                                mixBlendMode: 'overlay'
+                              }}
+                            ></div>
+                            
+                            <div className="relative z-10 flex flex-col h-full">
+                              <div className="text-xs font-semibold text-gray-500 mb-4 tracking-wider uppercase">
+                                Step {index + 1}
+                              </div>
+                              <h3 
+                                className="text-white mb-5 leading-[1.1] tracking-tight"
+                                style={{ 
+                                  fontSize: 'clamp(28px, 6vw, 42px)', 
+                                  letterSpacing: '-0.02em',
+                                  fontWeight: 'bold',
+                                  lineHeight: '1.1'
+                                }}
+                              >
+                                {step.title}
+                              </h3>
+                              <p className="text-base text-gray-400 leading-relaxed mt-auto">
+                                {step.desc}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Technology Section */}
