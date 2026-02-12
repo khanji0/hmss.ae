@@ -166,16 +166,39 @@ const Landing = () => {
         <Navigation />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-[7.6923%] pt-[80px]">
-          <div className="max-w-[1400px] mx-auto text-center">
+      <section className="min-h-screen flex items-end justify-center px-[7.6923%] pt-[80px] pb-32">
+          <div className="max-w-[1400px] mx-auto text-center relative w-full">
+            {/* Truck Image - Positioned on Top */}
             <div 
-              className="animate-fade-in"
+              className="animate-fade-in mb-4"
               style={{
                 animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards'
               }}
             >
+              <img 
+                src="/img/truck.jpg"
+                alt="Truck"
+                className="mx-auto"
+                style={{
+                  width: 'clamp(150px, 20vw, 240px)',
+                  height: 'auto',
+                  opacity: 0.6,
+                  filter: 'brightness(1.1)',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+            
+            <div 
+              className="animate-fade-in relative"
+              style={{
+                animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                animationDelay: '0.2s',
+                opacity: 0
+              }}
+            >
             <h1 
-              className="leading-[1.1] tracking-tight mb-8"
+              className="leading-[1.1] tracking-tight mb-8 relative z-10"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
