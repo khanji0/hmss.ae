@@ -2,44 +2,50 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const IntroScreen = ({ onComplete }) => {
-  const [animationStage, setAnimationStage] = useState(0);
+  const [stage, setStage] = useState('background'); // background, textReveal, pageReveal, complete
+  const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    // Stage 1: Line appears and expands (0-1.2s)
-    const timer1 = setTimeout(() => {
-      setAnimationStage(1);
-    }, 100);
+    const timers = [];
 
-    // Stage 2: Text appears after line fully expands (1.2s-2.8s)
-    const timer2 = setTimeout(() => {
-      setAnimationStage(2);
-    }, 1200);
+    // STEP 1: Background fade in (0-0.5s)
+    timers.push(setTimeout(() => {
+      setStage('textReveal');
+      setShowText(true);
+    }, 500));
 
-    // Stage 3: Curtain reveal starts (2.8s-4.2s)
-    const timer3 = setTimeout(() => {
-      setAnimationStage(3);
-    }, 2800);
+    // STEP 2: Text reveals from left to right (0.5s-3.5s)
+    timers.push(setTimeout(() => {
+      setStage('pageReveal');
+    }, 3500));
 
-    // Stage 4: Complete and show landing page (4.2s)
-    const timer4 = setTimeout(() => {
-      setAnimationStage(4);
+    // STEP 3: Page reveal transition (3.5s-4.5s)
+    timers.push(setTimeout(() => {
+      setStage('complete');
       setTimeout(() => {
         onComplete();
-      }, 600);
-    }, 4200);
+      }, 500);
+    }, 4500));
 
     return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
+      timers.forEach(timer => clearTimeout(timer));
     };
   }, [onComplete]);
 
-  // Light grid pattern component
+  // Subtle grain texture
+  const GrainTexture = () => (
+    <div
+      className="absolute inset-0 pointer-events-none opacity-[0.03]"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+      }}
+    />
+  );
+
+  // Light grid pattern
   const GridPattern = () => {
     const gridSize = 60;
-    const lineOpacity = 0.08;
+    const lineOpacity = 0.04;
 
     return (
       <div
@@ -57,70 +63,62 @@ const IntroScreen = ({ onComplete }) => {
 
   return (
     <AnimatePresence>
-      {animationStage < 4 && (
+      {stage !== 'complete' && (
         <motion.div
           className="fixed inset-0 bg-white z-50 flex items-center justify-center overflow-hidden"
-          initial={{ opacity: 1, y: 0 }}
-          animate={{
-            y: animationStage >= 3 ? '-100%' : 0,
-            opacity: animationStage >= 3 ? 0 : 1,
+          initial={{ opacity: 0 }}
+          animate={{ 
+            opacity: 1,
+            y: stage === 'pageReveal' ? '-100%' : 0
           }}
-          transition={{
-            duration: animationStage >= 3 ? 1.2 : 0.3,
-            ease: [0.16, 1, 0.3, 1],
+          exit={{ opacity: 0 }}
+          transition={{ 
+            opacity: { duration: 0.5 },
+            y: {
+              duration: stage === 'pageReveal' ? 1.5 : 0,
+              ease: [0.16, 1, 0.3, 1],
+            }
           }}
         >
-          {/* Grid Pattern Background */}
+          {/* Background Texture */}
+          <GrainTexture />
           <GridPattern />
 
-          {/* Vertical Line */}
-          <motion.div
-            className="absolute"
-            style={{
-              width: '2px',
-              height: '100%',
-              background: '#000000',
-              transformOrigin: 'bottom center',
-            }}
-            initial={{ scaleY: 0 }}
-            animate={{
-              scaleY: animationStage >= 1 ? 1 : 0,
-            }}
-            transition={{
-              duration: 1,
-              ease: [0.16, 1, 0.3, 1], // Custom easing for professional feel
-            }}
-          />
-
-          {/* Text Container */}
-          {animationStage >= 2 && (
-            <motion.div
-              className="absolute z-10 px-4 md:px-8 text-center max-w-[90vw]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-black tracking-tight relative"
-                style={{
+          {/* Text Container - One continuous text revealing from left to right */}
+          {showText && (
+            <div className="absolute" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+              <motion.div
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight"
+                style={{ 
                   whiteSpace: 'nowrap',
+                  lineHeight: '1',
+                  color: '#FF6B35',
                 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
               >
                 <motion.span
                   className="inline-block"
-                  initial={{ clipPath: 'inset(0 100% 0 0)' }}
-                  animate={{ clipPath: 'inset(0 0% 0 0)' }}
+                  initial={{ 
+                    clipPath: 'inset(0 100% 0 0)',
+                    opacity: 0
+                  }}
+                  animate={{ 
+                    clipPath: 'inset(0 0% 0 0)',
+                    opacity: 1
+                  }}
                   transition={{
-                    duration: 1.2,
+                    duration: 3,
                     ease: [0.16, 1, 0.3, 1],
-                    delay: 0.1,
                   }}
                 >
                   Hussain Murad Shipping Services
                 </motion.span>
-              </motion.h1>
-            </motion.div>
+              </motion.div>
+            </div>
           )}
+
         </motion.div>
       )}
     </AnimatePresence>
@@ -128,4 +126,3 @@ const IntroScreen = ({ onComplete }) => {
 };
 
 export default IntroScreen;
-
