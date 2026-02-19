@@ -60,7 +60,7 @@ const GridBackground = () => {
       }
 
       // Draw dots at intersections with mouse proximity effect
-      ctx.fillStyle = `rgba(0, 0, 0, ${dotOpacity})`; // Black
+      ctx.fillStyle = `rgba(0, 96, 57, ${dotOpacity})`; // Green #006039
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           // Calculate distance from mouse
@@ -77,9 +77,9 @@ const GridBackground = () => {
             const factor = 1 - distance / maxDistance;
             radius = dotRadius + factor * 2;
             opacity = dotOpacity + factor * 0.4;
-            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`; // Black
+            ctx.fillStyle = `rgba(0, 96, 57, ${opacity})`; // Green #006039
           } else {
-            ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`; // Black
+            ctx.fillStyle = `rgba(0, 96, 57, ${opacity})`; // Green #006039
           }
 
           ctx.beginPath();

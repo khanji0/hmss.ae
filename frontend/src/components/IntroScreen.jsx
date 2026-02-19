@@ -92,7 +92,7 @@ const IntroScreen = ({ onComplete }) => {
                 style={{ 
                   whiteSpace: 'nowrap',
                   lineHeight: '1',
-                  color: '#FF6B35',
+                  color: '#000000',
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

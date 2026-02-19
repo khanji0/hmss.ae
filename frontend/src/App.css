@@ -42,18 +42,18 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #00FFD1;
+    background: #000000;
     border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #6FD2C0;
+    background: #333333;
 }
 
 /* Selection */
 ::selection {
-    background: #00FFD1;
-    color: #000000;
+    background: #000000;
+    color: #FFFFFF;
 }
 
 /* Remove default button styles */
@@ -174,4 +174,70 @@ button:active {
         transform: translateY(400%);
         opacity: 0;
     }
+}
+
+/* Scrolling Clients Animation */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll-left {
+    animation: scrollLeft 30s linear infinite;
+    display: flex;
+    width: fit-content;
+}
+
+/* Scroll Down Indicator Animation */
+@keyframes scrollIndicator {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+@keyframes scrollDot {
+    0% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(12px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+}
+
+.animate-scroll-indicator {
+    animation: scrollIndicator 2s ease-in-out infinite;
+}
+
+.animate-scroll-dot {
+    animation: scrollDot 2s ease-in-out infinite;
+}
+
+.animate-bounce-arrow {
+    animation: bounceArrow 2s ease-in-out infinite;
 }

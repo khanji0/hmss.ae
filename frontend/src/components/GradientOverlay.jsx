@@ -49,7 +49,7 @@ const GradientOverlay = () => {
     <div
       ref={gradientRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 2 }}
+      style={{ zIndex: 1 }}
     />
   );
 };

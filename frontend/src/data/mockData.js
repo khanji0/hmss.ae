@@ -13,36 +13,58 @@ export const services = [
   {
     id: 1,
     number: "01",
-    title: "Global Freight Forwarding",
-    description: "Comprehensive range of global transportation services connecting importers and exporters worldwide with efficient, timely, and cost-effective freight solutions."
+    title: "International Freight Forwarding",
+    description: "Worldwide freight services for all Import/Export/Cross Trade shipments via Sea, Air, and Road. LCL Consolidation, Groupage, Transshipment, and Cross Trade Shipments with Switch BL and Fresh Documentation support.",
+    image: "/img/international.jpg"
   },
   {
     id: 2,
     number: "02",
-    title: "Supply Chain Management",
-    description: "Complete logistics management of goods, information, and financial transactions ensuring timely flow of inventory from suppliers to end customers on a global basis."
+    title: "Customs Clearance & Documentation",
+    description: "E-clearance through Customs Online Services, DDU/DDP clearance, door delivery services, and complete legalization/attestation from Chamber of Commerce, Ministry of Foreign Affairs, and Embassies & Consulate.",
+    image: "/img/cutom.jpg"
   },
   {
     id: 3,
     number: "03",
-    title: "Customs Clearance",
-    description: "Seamless customs clearance services with full recognition from local bodies, chambers, and Government of Dubai, ensuring smooth import and export operations."
+    title: "Transportation & Fleet Services",
+    description: "Local transportation through owned fleet of trucks and trailers for 20ft/40ft standard containers and special equipment. Local & GCC land transport services with complete door-to-door delivery.",
+    image: "/img/truck.jpg"
   },
   {
     id: 4,
     number: "04",
-    title: "Customized Solutions",
-    description: "Tailored logistics solutions designed to meet your specific business needs, delivering cost-effective and efficient freight management at all times."
+    title: "Warehousing & Distribution",
+    description: "Complete warehousing, storage, packing, labeling, re-labeling, crating, processing, dismantling, and distribution services for end-to-end supply chain management.",
+    image: "/img/warehouse.jpg"
+  },
+  {
+    id: 5,
+    number: "05",
+    title: "Specialized Cargo Handling",
+    description: "Exhibition cargo, vehicles, live plants clearance, ISO tank container handling, SOC container handling, cross stuffing inside/outside Port CFS, and marine insurance for local & cross trade shipments.",
+    image: "/img/HMSS.png"
+  },
+  {
+    id: 6,
+    number: "06",
+    title: "Container Trading & Personal Services",
+    description: "Second-hand container trading including special equipment (Reefers, Open Tops, Flat Racks). Personal effects shipments, house & office shifting, packing & removals services.",
+    image: "/img/HMSS.jpg"
   }
 ];
 
 export const clients = [
-  { name: "Dubai Customs", logo: "DC" },
-  { name: "Dubai Chamber", logo: "DCC" },
-  { name: "DP World", logo: "DPW" },
-  { name: "Emirates Airlines", logo: "EA" },
-  { name: "Jebel Ali Port", logo: "JAP" },
-  { name: "Dubai Trade", logo: "DT" }
+  { name: "Mediterranean Shipping Company", logo: "MSC" },
+  { name: "Maersk", logo: "MAERSK" },
+  { name: "CMA CGM", logo: "CMA CGM" },
+  { name: "COSCO Shipping Lines", logo: "COSCO" },
+  { name: "Hapag-Lloyd", logo: "HAPAG-LLOYD" },
+  { name: "Ocean Network Express", logo: "ONE" },
+  { name: "Evergreen Marine Corporation", logo: "EVERGREEN" },
+  { name: "HMM", logo: "HMM" },
+  { name: "Yang Ming Marine Transport Corporation", logo: "YANG MING" },
+  { name: "Orient Overseas Container Line", logo: "OOCL" }
 ];
 
 export const testimonials = [

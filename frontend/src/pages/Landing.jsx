@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Package, Globe, Zap, TrendingUp, CheckCircle2, Send } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import GridBackground from '../components/GridBackground';
 import GradientOverlay from '../components/GradientOverlay';
-import TruckAnimation from '../components/TruckAnimation';
 import AnimatedCounter from '../components/AnimatedCounter';
 import { companyInfo, services, clients, testimonials, stats, features } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
 import { toast } from 'sonner';
 
 // Process Grid Background Component with Red Dots
@@ -73,7 +74,7 @@ const ProcessGridBackground = () => {
         ctx.stroke();
       }
 
-      // Draw red dots at intersections
+      // Draw yellow dots at intersections
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           const dx = mousePos.current.x - x;
@@ -90,7 +91,7 @@ const ProcessGridBackground = () => {
             opacity = dotOpacity + factor * 0.4;
           }
 
-          ctx.fillStyle = `rgba(255, 0, 0, ${opacity})`; // Red
+          ctx.fillStyle = `rgba(255, 215, 0, ${opacity})`; // Yellow
           ctx.beginPath();
           ctx.arc(x, y, radius, 0, Math.PI * 2);
           ctx.fill();
@@ -126,6 +127,7 @@ const Landing = () => {
   });
 
   const [isVisible, setIsVisible] = useState({});
+  const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -158,133 +160,63 @@ const Landing = () => {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen relative overflow-hidden">
-      <TruckAnimation />
+    <div className="text-black min-h-screen relative overflow-hidden bg-white">
       <GridBackground />
       <GradientOverlay />
       <div className="relative" style={{ zIndex: 10 }}>
         <Navigation />
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-end justify-center px-[7.6923%] pt-[80px] pb-32">
-          <div className="max-w-[1400px] mx-auto text-center relative w-full">
-            {/* Truck Image - Positioned on Top */}
+        {/* Hero Section */}
+      <section className="min-h-screen flex flex-col items-start justify-start px-[7.6923%] pt-[180px] pb-32 relative" style={{ zIndex: 10 }}>
+          <div className="max-w-[1400px] mx-auto text-center w-full">
             <div 
-              className="animate-fade-in mb-4"
+              className="animate-fade-in"
               style={{
                 animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards'
               }}
             >
-              <img 
-                src="/img/truck.jpg"
-                alt="Truck"
-                className="mx-auto"
-                style={{
-                  width: 'clamp(150px, 20vw, 240px)',
-                  height: 'auto',
-                  opacity: 0.6,
-                  filter: 'brightness(1.1)',
-                  objectFit: 'contain'
-                }}
-              />
-            </div>
-            
-            <div 
-              className="animate-fade-in relative"
-              style={{
-                animation: 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                animationDelay: '0.2s',
-                opacity: 0
-              }}
-            >
             <h1 
-              className="leading-[1.1] tracking-tight mb-8 relative z-10"
+              className="leading-[1.1] tracking-tight mb-8"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
               <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-xl md:text-2xl text-black/90 mb-12 max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/90 mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: '#000000',
-                  color: '#FFFFFF',
-                  border: 'none',
-                  borderRadius: '0px',
-                  padding: '16px 32px',
-                  fontSize: '18px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s ease-in-out',
-                  minHeight: '56px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '12px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#333333';
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#000000';
-                  e.currentTarget.style.transform = 'scale(1)';
-                }}
-              >
-                Start Shipping Smarter
-                <ArrowRight size={20} />
-              </button>
-              <button
-                onClick={() => document.getElementById('technology').scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: 'rgba(0, 0, 0, 0.05)',
-                  color: '#000000',
-                  border: '1px solid rgba(0, 0, 0, 0.2)',
-                  borderRadius: '0px',
-                  padding: '16px 32px',
-                  fontSize: '18px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s ease-in-out',
-                  minHeight: '56px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.1)';
-                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.05)';
-                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
-                }}
-              >
-                Explore Technology
-              </button>
-            </div>
-            </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 max-w-5xl mx-auto">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div 
-                  className="text-5xl md:text-6xl font-semibold mb-2"
-                  style={{ color: '#000000' }}
-                >
-                  <AnimatedCounter value={stat.value} duration={2000} />
-                </div>
-                <div className="text-lg text-black/80">{stat.label}</div>
+            
+            {/* Scroll Down Animation */}
+            <div className="flex flex-col items-center gap-3 animate-scroll-indicator mt-8">
+              <span className="text-sm font-medium text-black/60 tracking-wider uppercase">Learn More</span>
+            <div 
+              className="flex flex-col items-center gap-2 cursor-pointer group"
+              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+            >
+              <div className="w-6 h-10 border-2 border-black/40 rounded-full flex items-start justify-center p-2 group-hover:border-black/60 transition-colors duration-300">
+                <div className="w-1.5 h-1.5 bg-black/60 rounded-full animate-scroll-dot group-hover:bg-black/80 transition-colors duration-300"></div>
               </div>
-            ))}
+              <svg 
+                className="animate-bounce-arrow" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2"
+                style={{ color: 'rgba(0, 0, 0, 0.6)' }}
+              >
+                <path d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
           </div>
+            </div>
           </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-40 px-[7.6923%]">
+      <section id="services" className="py-40 px-[7.6923%] relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="services-title" 
@@ -302,42 +234,149 @@ const Landing = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {services.map((service, index) => (
               <div
                 key={service.id}
                 id={`service-${service.id}`}
                 data-animate
-                className={`border border-black/20 p-12 transition-all duration-700 hover:border-black/50 hover:bg-black/5 ${
+                className={`border border-black/20 p-12 transition-all duration-700 hover:border-black/50 hover:bg-black/5 flex flex-col ${
                   isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <div 
-                  className="text-6xl font-bold mb-6"
-                  style={{
-                    color: '#000000',
-                    opacity: 0.3
-                  }}
-                >
-                  {service.number}
+                {/* Circular Image */}
+                <div className="mb-8 flex items-center justify-center">
+                  <div 
+                    className="rounded-full overflow-hidden"
+                    style={{
+                      width: '180px',
+                      height: '180px',
+                      border: '2px solid rgba(0, 0, 0, 0.1)'
+                    }}
+                  >
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-3xl font-semibold mb-4 text-black">
+                <h3 className="text-3xl font-semibold mb-6 text-black text-center">
                   {service.title}
                 </h3>
-                <p className="text-lg text-black/80 leading-relaxed">
-                  {service.description}
-                </p>
+                <motion.button
+                  onClick={() => setSelectedService(service)}
+                  className="mt-auto text-sm font-medium text-black border border-black/30 px-6 py-3 transition-all duration-300 hover:bg-black hover:text-white hover:border-black"
+                  style={{ borderRadius: '0px' }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Learn More
+                </motion.button>
               </div>
             ))}
           </div>
+
+          {/* Service Details Dialog */}
+          <Dialog open={selectedService !== null} onOpenChange={(open) => !open && setSelectedService(null)}>
+            <DialogContent 
+              className="max-w-3xl max-h-[85vh] overflow-y-auto bg-white border-2 border-black/10" 
+              style={{ 
+                borderRadius: '0px',
+                padding: '3rem',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+              }}
+            >
+              <AnimatePresence mode="wait">
+                {selectedService && (
+                  <motion.div
+                    key={selectedService.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <DialogHeader>
+                      {/* Animated Image */}
+                      <motion.div 
+                        className="mb-8 flex items-center justify-center"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <motion.div 
+                          className="rounded-full overflow-hidden shadow-lg"
+                          style={{
+                            width: '160px',
+                            height: '160px',
+                            border: '3px solid rgba(0, 0, 0, 0.1)'
+                          }}
+                          whileHover={{ scale: 1.05, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <img 
+                            src={selectedService.image} 
+                            alt={selectedService.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </motion.div>
+                      </motion.div>
+
+                      {/* Animated Title */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <DialogTitle 
+                          className="text-4xl font-semibold text-black mb-6 text-center"
+                          style={{ lineHeight: '1.2' }}
+                        >
+                          {selectedService.title}
+                        </DialogTitle>
+                      </motion.div>
+
+                      {/* Animated Description */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <DialogDescription 
+                          className="text-lg text-black/80 leading-relaxed text-center" 
+                          style={{ 
+                            color: 'rgba(0, 0, 0, 0.8)',
+                            fontSize: '1.125rem',
+                            lineHeight: '1.75rem'
+                          }}
+                        >
+                          {selectedService.description}
+                        </DialogDescription>
+                      </motion.div>
+
+                      {/* Decorative Line */}
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="mt-8 h-[1px] bg-gradient-to-r from-transparent via-black/20 to-transparent"
+                        style={{ originX: 0.5 }}
+                      />
+                    </DialogHeader>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </DialogContent>
+          </Dialog>
           </div>
       </section>
 
       {/* Process Flow Section */}
-      <section id="process" className="py-40 px-[7.6923%] bg-black relative overflow-hidden">
+      <section id="process" className="py-40 px-[7.6923%] bg-black relative overflow-hidden" style={{ zIndex: 10 }}>
         {/* Grid Background with Red Dots */}
         <ProcessGridBackground />
         
@@ -551,7 +590,7 @@ const Landing = () => {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
@@ -564,44 +603,50 @@ const Landing = () => {
               <span style={{ color: '#000000' }}>Trusted Since </span>
               <span style={{ color: '#000000' }}>2002</span>
             </h2>
-            <p className="text-xl text-black/80 max-w-3xl mx-auto">
+            <p className="text-xl text-black/80 max-w-3xl mx-auto mb-16">
               HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                id={`feature-${index}`}
-                data-animate
-                className={`transition-all duration-700 ${
-                  isVisible[`feature-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{
-                  transitionDelay: `${index * 150}ms`
-                }}
-              >
-                <div className="mb-6">
-                  <CheckCircle2 
-                    size={48} 
-                    style={{ color: '#000000' }} 
-                  />
+          {/* Stats Section with Animation */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+            {stats.map((stat, index) => {
+              // Calculate years dynamically
+              const currentYear = new Date().getFullYear();
+              const yearsInBusiness = currentYear - 2002;
+              
+              return (
+                <div 
+                  key={index} 
+                  id={`tech-stat-${index}`}
+                  data-animate
+                  className={`text-center transition-all duration-1000 ${
+                    isVisible[`tech-stat-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{
+                    transitionDelay: `${index * 150}ms`
+                  }}
+                >
+                  <div 
+                    className="text-5xl md:text-6xl font-bold mb-3"
+                    style={{ color: '#000000' }}
+                  >
+                    {stat.label === "Years in Business" ? (
+                      <AnimatedCounter value={`${yearsInBusiness}+`} duration={2000} />
+                    ) : (
+                      <AnimatedCounter value={stat.value} duration={2000} />
+                    )}
+                  </div>
+                  <div className="text-lg text-black/70 font-medium">{stat.label}</div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-black">
-                  {feature.title}
-                </h3>
-                <p className="text-lg text-black/80 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
           </div>
       </section>
 
       {/* Clients Section */}
-      <section id="clients" className="py-40 px-[7.6923%]">
+      <section id="clients" className="py-40 px-[7.6923%] relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="clients-title"
@@ -616,22 +661,69 @@ const Landing = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-32">
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                id={`client-${index}`}
-                data-animate
-                className={`border border-black/20 aspect-square flex items-center justify-center transition-all duration-700 hover:border-black/50 hover:bg-black/5 ${
-                  isVisible[`client-${index}`] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`
-                }}
-              >
-                <span className="text-2xl font-bold text-black/50">{client.logo}</span>
-              </div>
-            ))}
+          {/* Scrolling Clients */}
+          <div className="mb-32 overflow-hidden relative">
+            <div className="flex gap-16 animate-scroll-left">
+              {/* First set */}
+              {clients.map((client, index) => {
+                // Color mapping for each company
+                const colors = [
+                  '#FF6B35', // MSC - Orange
+                  '#C8102E', // Maersk - Red
+                  '#003087', // CMA CGM - Blue
+                  '#FF6B00', // COSCO - Orange
+                  '#FFCC00', // Hapag-Lloyd - Yellow
+                  '#FF6900', // ONE - Orange
+                  '#00A651', // Evergreen - Green
+                  '#0066CC', // HMM - Blue
+                  '#FF6B00', // Yang Ming - Orange
+                  '#003087'  // OOCL - Blue
+                ];
+                return (
+                  <div
+                    key={`client-1-${index}`}
+                    className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    style={{ minWidth: '200px' }}
+                  >
+                    <span 
+                      className="text-2xl font-bold whitespace-nowrap"
+                      style={{ color: colors[index] }}
+                    >
+                      {client.logo}
+                    </span>
+                  </div>
+                );
+              })}
+              {/* Duplicate set for seamless loop */}
+              {clients.map((client, index) => {
+                const colors = [
+                  '#FF6B35', // MSC
+                  '#C8102E', // Maersk
+                  '#003087', // CMA CGM
+                  '#FF6B00', // COSCO
+                  '#FFCC00', // Hapag-Lloyd
+                  '#FF6900', // ONE
+                  '#00A651', // Evergreen
+                  '#0066CC', // HMM
+                  '#FF6B00', // Yang Ming
+                  '#003087'  // OOCL
+                ];
+                return (
+                  <div
+                    key={`client-2-${index}`}
+                    className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    style={{ minWidth: '200px' }}
+                  >
+                    <span 
+                      className="text-2xl font-bold whitespace-nowrap"
+                      style={{ color: colors[index] }}
+                    >
+                      {client.logo}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Testimonials */}
@@ -663,7 +755,7 @@ const Landing = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm">
+      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
           <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"

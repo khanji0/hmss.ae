@@ -39,7 +39,7 @@ const AnimatedCounter = ({ value, duration = 2000 }) => {
       return;
     }
 
-    // Extract number and suffix from value (e.g., "22+" -> 22, "+")
+    // Extract number and suffix from value (e.g., "22+" -> 22, "+", "10K+" -> 10, "K+")
     const match = value.match(/(\d+)(.*)/);
     if (!match) {
       setCount(value);
