@@ -23,12 +23,17 @@ const Navigation = () => {
 
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-400 bg-white/80 backdrop-blur-xl border-b border-black/10"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-400 bg-white border-b border-black/10"
       style={{ height: '80px' }}
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center" style={{ minHeight: '80px' }}>
+        <div className="flex items-center gap-3" style={{ minHeight: '80px' }}>
+          <img 
+            src="/img/hmss_logo.jpeg" 
+            alt="HMSS Logo" 
+            className="h-12 w-auto object-contain"
+          />
           <span 
             className="text-2xl font-bold tracking-wider transition-colors duration-300"
             style={{ 
@@ -81,7 +86,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-black/10">
+        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white border-b border-black/10">
           <div className="flex flex-col px-[7.6923%] py-6 gap-4">
             <button 
               onClick={() => {

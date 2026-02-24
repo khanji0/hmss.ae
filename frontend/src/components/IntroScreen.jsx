@@ -84,9 +84,23 @@ const IntroScreen = ({ onComplete }) => {
           <GrainTexture />
           <GridPattern />
 
-          {/* Text Container - One continuous text revealing from left to right */}
+          {/* Text Container with Logo - One continuous text revealing from left to right */}
           {showText && (
-            <div className="absolute" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div className="absolute flex items-center gap-6" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+              {/* Logo - Left side */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <img 
+                  src="/img/hmss_logo.jpeg" 
+                  alt="HMSS Logo" 
+                  className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain"
+                />
+              </motion.div>
+              
+              {/* Text */}
               <motion.div
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight"
                 style={{ 

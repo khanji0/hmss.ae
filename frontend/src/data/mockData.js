@@ -6,7 +6,7 @@ export const companyInfo = {
   tagline: "Forefront of Global Transportation & Logistics",
   location: "Dubai, UAE",
   established: "2002",
-  description: "At the forefront of global transportation and logistics worldwide. Providing comprehensive freight solutions with customized services focused on invaluable customer satisfaction and cost-effective solutions."
+  description: "Sea Freight • Air Freight • Customs Clearance • Door-to-Door Delivery"
 };
 
 export const services = [

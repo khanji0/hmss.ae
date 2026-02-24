@@ -74,7 +74,7 @@ const ProcessGridBackground = () => {
         ctx.stroke();
       }
 
-      // Draw yellow dots at intersections
+      // Draw dark green dots at intersections
       for (let x = 0; x < canvas.width; x += gridSize) {
         for (let y = 0; y < canvas.height; y += gridSize) {
           const dx = mousePos.current.x - x;
@@ -91,7 +91,7 @@ const ProcessGridBackground = () => {
             opacity = dotOpacity + factor * 0.4;
           }
 
-          ctx.fillStyle = `rgba(255, 215, 0, ${opacity})`; // Yellow
+          ctx.fillStyle = `rgba(0, 96, 57, ${opacity})`; // Dark Green (#006039)
           ctx.beginPath();
           ctx.arc(x, y, radius, 0, Math.PI * 2);
           ctx.fill();
@@ -122,7 +122,11 @@ const Landing = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
+    origin: '',
+    destination: '',
+    cargoType: '',
     message: ''
   });
 
@@ -150,14 +154,39 @@ const Landing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock form submission
-    toast.success('Message sent successfully! We will contact you soon.');
-    setFormData({ name: '', email: '', company: '', message: '' });
+    // Create email body
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Origin: ${formData.origin}
+Destination: ${formData.destination}
+Cargo Type: ${formData.cargoType}
+Message: ${formData.message}
+    `.trim();
+    
+    // Create mailto link
+    const mailtoLink = `mailto:Jibranakhan6@gmail.com?subject=Contact Request from ${formData.name}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+    
+    toast.success('Opening email client... Please send the email to complete your request.');
+    setFormData({ 
+      name: '', 
+      email: '', 
+      phone: '',
+      company: '', 
+      origin: '',
+      destination: '',
+      cargoType: '',
+      message: '' 
+    });
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   return (
     <div className="text-black min-h-screen relative overflow-hidden bg-white">
@@ -176,13 +205,16 @@ const Landing = () => {
               }}
             >
             <h1 
-              className="leading-[1.1] tracking-tight mb-8"
+              className="leading-[1.1] tracking-tight mb-6"
               style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
               <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
+            <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto font-bold tracking-wide" style={{ color: '#DC143C' }}>
+              Connecting Dubai to the World Since 2002
+            </p>
             <p className="text-xl md:text-2xl text-black/90 mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
               {companyInfo.description}
             </p>
@@ -195,7 +227,7 @@ const Landing = () => {
               onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
             >
               <div className="w-6 h-10 border-2 border-black/40 rounded-full flex items-start justify-center p-2 group-hover:border-black/60 transition-colors duration-300">
-                <div className="w-1.5 h-1.5 bg-black/60 rounded-full animate-scroll-dot group-hover:bg-black/80 transition-colors duration-300"></div>
+                <div className="w-1.5 h-1.5 bg-red-600 rounded-full animate-scroll-dot group-hover:bg-red-700 transition-colors duration-300"></div>
               </div>
               <svg 
                 className="animate-bounce-arrow" 
@@ -401,11 +433,57 @@ const Landing = () => {
           >
             <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#FFFFFF' }}>How It </span>
-              <span style={{ color: '#9CA3AF' }}>Works</span>
+              <span style={{ color: '#FFFFFF' }}>Works</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl">
-              Ready to Ship?
-            </p>
+            <div className="flex flex-col items-start gap-4">
+              <p className="text-xl text-gray-400 max-w-2xl">
+                Ready to Ship?
+              </p>
+              <motion.button
+                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-4 text-white font-semibold text-lg tracking-wide relative overflow-hidden group"
+                style={{ 
+                  borderRadius: '0px',
+                  backgroundColor: '#006039',
+                  border: '2px solid #006039',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: '#007a4a',
+                  boxShadow: '0 10px 15px -3px rgba(0, 96, 57, 0.3), 0 4px 6px -2px rgba(0, 96, 57, 0.2)'
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Request Shipment
+                  <motion.svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="inline-block"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ 
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </motion.svg>
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-white/10"
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '100%' }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.button>
+            </div>
           </div>
 
           {/* Process Steps Grid */}
@@ -421,28 +499,28 @@ const Landing = () => {
               <div className="process-scroll-container relative overflow-x-auto pb-8">
                 <div className="flex items-start gap-6 min-w-max px-4">
                   {[
-                    { title: 'Request Your Shipment', desc: 'Submit your shipment details and requirements.' },
-                    { title: 'Cargo Pickup', desc: 'We collect your cargo directly from your location.' },
-                    { title: 'Customs Clearance & Transportation', desc: 'We handle customs processing and manage transportation.' },
-                    { title: 'Doorstep Delivery', desc: 'Your shipment is delivered safely to your destination.' }
+                    { title: 'Request a Quote', desc: 'Submit your shipment details.' },
+                    { title: 'Cargo Pickup', desc: 'We collect your cargo from your location.' },
+                    { title: 'Customs & Shipping', desc: 'We handle customs clearance and transportation.' },
+                    { title: 'Safe Delivery', desc: 'Your shipment is delivered to your destination.' }
                   ].map((step, index) => (
                     <React.Fragment key={index}>
                       <div 
                         className="flex-shrink-0 group"
-                        style={{
-                          width: '420px',
-                          animation: isVisible['process-steps'] 
-                            ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
-                            : 'none',
-                          animationDelay: `${index * 80}ms`,
-                          opacity: isVisible['process-steps'] ? undefined : 0
-                        }}
-                      >
+                          style={{
+                            width: '320px',
+                            animation: isVisible['process-steps'] 
+                              ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
+                              : 'none',
+                            animationDelay: `${index * 80}ms`,
+                            opacity: isVisible['process-steps'] ? undefined : 0
+                          }}
+                        >
                         <div className="relative h-full">
                           {/* Step Card with Black Background */}
                           <div 
-                            className="border border-gray-800 bg-black p-10 transition-all duration-500 hover:border-gray-600 hover:scale-[1.02] relative overflow-hidden flex flex-col"
-                            style={{ minHeight: '420px', borderRadius: '0px' }}
+                            className="border border-gray-800 bg-black p-8 transition-all duration-500 hover:border-gray-600 hover:scale-[1.02] relative overflow-hidden flex flex-col"
+                            style={{ minHeight: '280px', borderRadius: '0px' }}
                           >
                             {/* Grainy overlay on card */}
                             <div 
@@ -459,9 +537,9 @@ const Landing = () => {
                                 Step {index + 1}
                               </div>
                               <h3 
-                                className="text-white mb-6 leading-[1.1] tracking-tight"
+                                className="text-white mb-4 leading-[1.1] tracking-tight"
                                 style={{ 
-                                  fontSize: 'clamp(32px, 4.5vw, 56px)', 
+                                  fontSize: 'clamp(24px, 3.5vw, 36px)', 
                                   letterSpacing: '-0.02em',
                                   fontWeight: 'bold',
                                   lineHeight: '1.1'
@@ -469,7 +547,7 @@ const Landing = () => {
                               >
                                 {step.title}
                               </h3>
-                              <p className="text-base text-gray-400 leading-relaxed mt-auto">
+                              <p className="text-sm text-gray-400 leading-relaxed mt-auto">
                                 {step.desc}
                               </p>
                             </div>
@@ -483,7 +561,7 @@ const Landing = () => {
                           className="flex-shrink-0 flex items-center justify-center relative"
                           style={{
                             width: '48px',
-                            height: '420px',
+                            height: '280px',
                             animation: isVisible['process-steps'] 
                               ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
                               : 'none',
@@ -522,10 +600,10 @@ const Landing = () => {
             {/* Mobile/Tablet Vertical Flow */}
             <div className="lg:hidden space-y-8">
               {[
-                { title: 'Request Your Shipment', desc: 'Submit your shipment details and requirements.' },
-                { title: 'Cargo Pickup', desc: 'We collect your cargo directly from your location.' },
-                { title: 'Customs Clearance & Transportation', desc: 'We handle customs processing and manage transportation.' },
-                { title: 'Doorstep Delivery', desc: 'Your shipment is delivered safely to your destination.' }
+                { title: 'Request a Quote', desc: 'Submit your shipment details.' },
+                { title: 'Cargo Pickup', desc: 'We collect your cargo from your location.' },
+                { title: 'Customs & Shipping', desc: 'We handle customs clearance and transportation.' },
+                { title: 'Safe Delivery', desc: 'Your shipment is delivered to your destination.' }
               ].map((step, index) => (
                 <React.Fragment key={index}>
                   <div 
@@ -545,8 +623,8 @@ const Landing = () => {
                         )}
                         <div className="pl-0 pb-6 w-full">
                           <div 
-                            className="border border-gray-800 bg-black p-8 transition-all duration-500 hover:border-gray-600 relative overflow-hidden flex flex-col"
-                            style={{ borderRadius: '0px', minHeight: '320px' }}
+                            className="border border-gray-800 bg-black p-6 transition-all duration-500 hover:border-gray-600 relative overflow-hidden flex flex-col"
+                            style={{ borderRadius: '0px', minHeight: '220px' }}
                           >
                             {/* Grainy overlay on card */}
                             <div 
@@ -563,9 +641,9 @@ const Landing = () => {
                                 Step {index + 1}
                               </div>
                               <h3 
-                                className="text-white mb-5 leading-[1.1] tracking-tight"
+                                className="text-white mb-3 leading-[1.1] tracking-tight"
                                 style={{ 
-                                  fontSize: 'clamp(28px, 6vw, 42px)', 
+                                  fontSize: 'clamp(20px, 5vw, 28px)', 
                                   letterSpacing: '-0.02em',
                                   fontWeight: 'bold',
                                   lineHeight: '1.1'
@@ -573,7 +651,7 @@ const Landing = () => {
                               >
                                 {step.title}
                               </h3>
-                              <p className="text-base text-gray-400 leading-relaxed mt-auto">
+                              <p className="text-sm text-gray-400 leading-relaxed mt-auto">
                                 {step.desc}
                               </p>
                             </div>
@@ -768,9 +846,15 @@ const Landing = () => {
               <span style={{ color: '#000000' }}>Let's </span>
               <span style={{ color: '#000000' }}>Connect</span>
             </h2>
-            <p className="text-xl text-black/80">
+            <p className="text-xl text-black/80 mb-4">
               Ready to transform your logistics operations? Get in touch with our team.
             </p>
+            <a 
+              href="tel:+971559994939" 
+              className="text-lg font-medium text-black/80 hover:text-black transition-colors duration-300 inline-block"
+            >
+              📞 +971 55 999 4939
+            </a>
           </div>
 
           <form 
@@ -831,15 +915,127 @@ const Landing = () => {
                 />
               </div>
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <Input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                />
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  name="company"
+                  placeholder="Company Name"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <Input
+                  type="text"
+                  name="origin"
+                  placeholder="Origin (e.g., Dubai, UAE)"
+                  value={formData.origin}
+                  onChange={handleChange}
+                  required
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                />
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  name="destination"
+                  placeholder="Destination (e.g., London, UK)"
+                  value={formData.destination}
+                  onChange={handleChange}
+                  required
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  style={{ 
+                    borderRadius: '0px',
+                    borderWidth: '1px',
+                    borderColor: 'rgba(0, 0, 0, 0.2)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = '#000000';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                    e.currentTarget.style.background = '#FFFFFF';
+                  }}
+                />
+              </div>
+            </div>
             <div>
               <Input
                 type="text"
-                name="company"
-                placeholder="Company Name"
-                value={formData.company}
+                name="cargoType"
+                placeholder="Cargo Type (e.g., General Cargo, Container, etc.)"
+                value={formData.cargoType}
                 onChange={handleChange}
-                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg focus:border-black transition-colors"
-                style={{ borderRadius: '0px' }}
+                required
+                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                style={{ 
+                  borderRadius: '0px',
+                  borderWidth: '1px',
+                  borderColor: 'rgba(0, 0, 0, 0.2)'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#000000';
+                  e.currentTarget.style.background = '#FFFFFF';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.background = '#FFFFFF';
+                }}
               />
             </div>
             <div>
@@ -851,7 +1047,19 @@ const Landing = () => {
                 required
                 rows={6}
                 className="bg-white border-black/20 text-black placeholder:text-black/40 text-lg focus:border-black transition-colors resize-none"
-                style={{ borderRadius: '0px' }}
+                style={{ 
+                  borderRadius: '0px',
+                  borderWidth: '1px',
+                  borderColor: 'rgba(0, 0, 0, 0.2)'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#000000';
+                  e.currentTarget.style.background = '#FFFFFF';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.background = '#FFFFFF';
+                }}
               />
             </div>
             <button
@@ -893,17 +1101,24 @@ const Landing = () => {
       <footer className="border-t border-black/20 py-12 px-[7.6923%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <div 
-                className="text-2xl font-semibold mb-2"
-                style={{ color: '#000000' }}
-              >
-                HUSSAIN MURAD SHIPPING SERVICES LLC
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+              <img 
+                src="/img/hmss_logo.jpeg" 
+                alt="HMSS Logo" 
+                className="h-16 w-auto object-contain"
+              />
+              <div>
+                <div 
+                  className="text-2xl font-semibold mb-2"
+                  style={{ color: '#000000' }}
+                >
+                  HUSSAIN MURAD SHIPPING SERVICES LLC
+                </div>
+                <div className="text-black/70">Established 2002 | Dubai, UAE</div>
               </div>
-              <div className="text-black/70">Established 2002 | Dubai, UAE</div>
             </div>
             <div className="text-black/60 text-center md:text-right">
-              © 2025 Hussain Murad Shipping Services LLC. All rights reserved.
+              © 2026 Hussain Murad Shipping Services LLC. All rights reserved.
             </div>
           </div>
         </div>
