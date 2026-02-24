@@ -113,3 +113,20 @@ code {
         border-bottom-color: inherit;
     }
 }
+
+/* Smooth horizontal scrolling for mobile */
+@layer utilities {
+    .overflow-x-auto {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .overflow-x-auto {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

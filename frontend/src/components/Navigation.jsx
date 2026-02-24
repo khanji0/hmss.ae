@@ -28,14 +28,14 @@ const Navigation = () => {
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-3" style={{ minHeight: '80px' }}>
+        <div className="flex items-center gap-2 sm:gap-3" style={{ minHeight: '80px' }}>
           <img 
             src="/img/hmss_logo.jpeg" 
             alt="HMSS Logo" 
-            className="h-12 w-auto object-contain"
+            className="h-8 sm:h-10 md:h-12 w-auto object-contain"
           />
           <span 
-            className="text-2xl font-bold tracking-wider transition-colors duration-300"
+            className="text-lg sm:text-xl md:text-2xl font-bold tracking-wider transition-colors duration-300"
             style={{ 
               color: '#000000',
               letterSpacing: '0.15em',
@@ -60,6 +60,12 @@ const Navigation = () => {
             className="transition-colors duration-300 text-lg font-normal text-black/70 hover:text-black"
           >
             Services
+          </button>
+          <button 
+            onClick={() => scrollToSection('pricing')}
+            className="transition-colors duration-300 text-lg font-normal text-black/70 hover:text-black"
+          >
+            Pricing
           </button>
           <button 
             onClick={() => scrollToSection('technology')}
@@ -102,6 +108,12 @@ const Navigation = () => {
               className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
             >
               Services
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')}
+              className="text-black/70 hover:text-black transition-colors duration-300 text-lg font-normal text-left"
+            >
+              Pricing
             </button>
             <button 
               onClick={() => scrollToSection('technology')}

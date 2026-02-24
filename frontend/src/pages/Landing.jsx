@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Package, Globe, Zap, TrendingUp, CheckCircle2, Send } from 'lucide-react';
+import { ArrowRight, Package, Globe, Zap, TrendingUp, CheckCircle2, Send, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import GridBackground from '../components/GridBackground';
@@ -196,7 +196,7 @@ Message: ${formData.message}
         <Navigation />
 
         {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-start justify-start px-[7.6923%] pt-[180px] pb-32 relative" style={{ zIndex: 10 }}>
+      <section className="min-h-screen flex flex-col items-start justify-start px-4 sm:px-6 md:px-[7.6923%] pt-24 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto text-center w-full">
             <div 
               className="animate-fade-in"
@@ -205,22 +205,41 @@ Message: ${formData.message}
               }}
             >
             <h1 
-              className="leading-[1.1] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.02em' }}
+              className="leading-[1.1] tracking-tight mb-4 sm:mb-6"
+              style={{ fontSize: 'clamp(36px, 8vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
-              <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
+              <span style={{ color: '#006039', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto font-bold tracking-wide" style={{ color: '#DC143C' }}>
+            <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 max-w-3xl mx-auto font-bold tracking-wide px-4" style={{ color: '#DC143C' }}>
               Connecting Dubai to the World Since 2002
             </p>
-            <p className="text-xl md:text-2xl text-black/90 mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
-              {companyInfo.description}
-            </p>
+            <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 mb-6 sm:mb-8 max-w-3xl mx-auto font-normal leading-relaxed px-4 mt-6 sm:mt-8 md:mt-10">
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                {companyInfo.description.split(' • ').map((item, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.2,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
+                    className="inline-block"
+                  >
+                    {item}
+                    {index < companyInfo.description.split(' • ').length - 1 && (
+                      <span className="mx-2 text-black/40">•</span>
+                    )}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
             
             {/* Scroll Down Animation */}
-            <div className="flex flex-col items-center gap-3 animate-scroll-indicator mt-8">
+            <div className="flex flex-col items-center gap-3 animate-scroll-indicator mt-24 sm:mt-32 md:mt-32 lg:mt-36">
               <span className="text-sm font-medium text-black/60 tracking-wider uppercase">Learn More</span>
             <div 
               className="flex flex-col items-center gap-2 cursor-pointer group"
@@ -248,36 +267,80 @@ Message: ${formData.message}
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-40 px-[7.6923%] relative" style={{ zIndex: 10 }}>
+      <section id="services" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="services-title" 
             data-animate
-            className={`mb-24 transition-all duration-1000 ${
+            className={`mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
               isVisible['services-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#000000' }}>Comprehensive </span>
               <span style={{ color: '#000000' }}>Logistics Solutions</span>
             </h2>
-            <p className="text-xl text-black/80 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-2xl">
               Established in 2002 with full recognition from Dubai Government, local bodies, and chambers. Providing customized freight solutions focused on invaluable customer satisfaction.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          {/* Mobile Horizontal Scroll */}
+          <div className="md:hidden overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6">
+            <div className="flex gap-6 min-w-max">
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  id={`service-${service.id}`}
+                  data-animate
+                  className={`border border-black/20 p-6 sm:p-8 transition-all duration-700 hover:border-black/50 hover:bg-black/5 flex flex-col flex-shrink-0 ${
+                    isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{
+                    transitionDelay: `${index * 100}ms`,
+                    width: '280px'
+                  }}
+                >
+                  {/* Circular Image */}
+                  <div className="mb-6 flex items-center justify-center">
+                    <div 
+                      className="rounded-full overflow-hidden"
+                      style={{
+                        width: '140px',
+                        height: '140px',
+                        border: '2px solid rgba(0, 0, 0, 0.1)'
+                      }}
+                    >
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 text-black text-center">
+                    {service.title}
+                  </h3>
+                  <motion.button
+                    onClick={() => setSelectedService(service)}
+                    className="mt-auto text-xs font-medium text-black border border-black/30 px-4 py-2.5 transition-all duration-300 hover:bg-black hover:text-white hover:border-black w-full"
+                    style={{ borderRadius: '0px' }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Learn More
+                  </motion.button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
             {services.map((service, index) => (
               <div
-                key={service.id}
-                id={`service-${service.id}`}
-                data-animate
-                className={`border border-black/20 p-12 transition-all duration-700 hover:border-black/50 hover:bg-black/5 flex flex-col ${
-                  isVisible[`service-${service.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`
-                }}
+                key={`desktop-${service.id}`}
+                className="border border-black/20 p-8 md:p-10 lg:p-12 transition-all duration-700 hover:border-black/50 hover:bg-black/5 flex flex-col opacity-100"
               >
                 {/* Circular Image */}
                 <div className="mb-8 flex items-center justify-center">
@@ -296,7 +359,7 @@ Message: ${formData.message}
                     />
                   </div>
                 </div>
-                <h3 className="text-3xl font-semibold mb-6 text-black text-center">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-black text-center">
                   {service.title}
                 </h3>
                 <motion.button
@@ -407,8 +470,77 @@ Message: ${formData.message}
           </div>
       </section>
 
+      {/* Get a Quote Section */}
+      <section id="pricing" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
+        <div className="max-w-[1400px] mx-auto">
+          <div 
+            id="pricing-title"
+            data-animate
+            className={`text-center mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
+              isVisible['pricing-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-3 sm:mb-4 tracking-tight leading-[1.1]">
+              <span style={{ color: '#006039' }}>Get Your </span>
+              <span style={{ color: '#006039' }}>Custom Quote</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+              Every shipment is unique. Get a personalized quote tailored to your specific needs, cargo type, and route. Our team will provide competitive rates with transparent pricing—no hidden fees.
+            </p>
+          </div>
+
+          {/* Call to Action */}
+          <div 
+            id="pricing-cta"
+            data-animate
+            className={`flex flex-row items-center justify-center gap-6 sm:gap-8 transition-all duration-1000 ${
+              isVisible['pricing-cta'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <motion.a
+              href="tel:+971559994939"
+              className="px-8 sm:px-10 md:px-12 py-4 sm:py-4.5 md:py-5 text-white font-semibold text-base sm:text-lg md:text-xl tracking-wide relative overflow-hidden group flex items-center justify-center gap-3"
+              style={{ 
+                borderRadius: '0px',
+                backgroundColor: '#000000',
+                border: '2px solid #000000',
+                minWidth: '200px'
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: '#333333',
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Phone size={24} className="flex-shrink-0" />
+              <span>Call for Quote</span>
+              <motion.div
+                className="absolute inset-0 bg-white/10"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.5 }}
+              />
+            </motion.a>
+            
+            <div className="text-left">
+              <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black mb-1">
+                +971 55 999 4939
+              </div>
+              <div className="text-sm sm:text-base text-black/60">
+                Available 24/7 for urgent shipments
+              </div>
+            </div>
+          </div>
+          
+          <p className="mt-4 sm:mt-6 text-center text-sm sm:text-base text-black/60">
+            Or fill out our <a href="#contact" className="text-black underline hover:text-black/80 transition-colors">contact form</a> and we'll get back to you with a detailed quote.
+          </p>
+        </div>
+      </section>
+
       {/* Process Flow Section */}
-      <section id="process" className="py-40 px-[7.6923%] bg-black relative overflow-hidden" style={{ zIndex: 10 }}>
+      <section id="process" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-black relative overflow-hidden" style={{ zIndex: 10 }}>
         {/* Grid Background with Red Dots */}
         <ProcessGridBackground />
         
@@ -427,21 +559,21 @@ Message: ${formData.message}
           <div 
             id="process-title"
             data-animate
-            className={`mb-24 transition-all duration-1000 ${
+            className={`mb-8 sm:mb-10 md:mb-12 transition-all duration-1000 ${
               isVisible['process-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#FFFFFF' }}>How It </span>
               <span style={{ color: '#FFFFFF' }}>Works</span>
             </h2>
-            <div className="flex flex-col items-start gap-4">
-              <p className="text-xl text-gray-400 max-w-2xl">
+            <div className="flex flex-col items-start gap-3 sm:gap-4">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl">
                 Ready to Ship?
               </p>
               <motion.button
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="px-10 py-4 text-white font-semibold text-lg tracking-wide relative overflow-hidden group"
+                className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 text-white font-semibold text-sm sm:text-base md:text-lg tracking-wide relative overflow-hidden group w-full sm:w-auto"
                 style={{ 
                   borderRadius: '0px',
                   backgroundColor: '#006039',
@@ -456,16 +588,16 @@ Message: ${formData.message}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   Request Shipment
                   <motion.svg
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
-                    className="inline-block"
+                    className="hidden sm:inline-block"
                     animate={{ x: [0, 4, 0] }}
                     transition={{ 
                       duration: 1.5,
@@ -508,7 +640,7 @@ Message: ${formData.message}
                       <div 
                         className="flex-shrink-0 group"
                           style={{
-                            width: '320px',
+                            width: 'clamp(280px, 85vw, 320px)',
                             animation: isVisible['process-steps'] 
                               ? `processStepFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards` 
                               : 'none',
@@ -519,8 +651,8 @@ Message: ${formData.message}
                         <div className="relative h-full">
                           {/* Step Card with Black Background */}
                           <div 
-                            className="border border-gray-800 bg-black p-8 transition-all duration-500 hover:border-gray-600 hover:scale-[1.02] relative overflow-hidden flex flex-col"
-                            style={{ minHeight: '280px', borderRadius: '0px' }}
+                            className="border border-gray-800 bg-black p-6 sm:p-8 transition-all duration-500 hover:border-gray-600 hover:scale-[1.02] relative overflow-hidden flex flex-col"
+                            style={{ minHeight: 'clamp(240px, 50vh, 280px)', borderRadius: '0px' }}
                           >
                             {/* Grainy overlay on card */}
                             <div 
@@ -537,9 +669,9 @@ Message: ${formData.message}
                                 Step {index + 1}
                               </div>
                               <h3 
-                                className="text-white mb-4 leading-[1.1] tracking-tight"
+                                className="text-white mb-3 sm:mb-4 leading-[1.1] tracking-tight"
                                 style={{ 
-                                  fontSize: 'clamp(24px, 3.5vw, 36px)', 
+                                  fontSize: 'clamp(20px, 4vw, 36px)', 
                                   letterSpacing: '-0.02em',
                                   fontWeight: 'bold',
                                   lineHeight: '1.1'
@@ -547,7 +679,7 @@ Message: ${formData.message}
                               >
                                 {step.title}
                               </h3>
-                              <p className="text-sm text-gray-400 leading-relaxed mt-auto">
+                              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mt-auto">
                                 {step.desc}
                               </p>
                             </div>
@@ -597,97 +729,90 @@ Message: ${formData.message}
               </div>
             </div>
 
-            {/* Mobile/Tablet Vertical Flow */}
-            <div className="lg:hidden space-y-8">
-              {[
-                { title: 'Request a Quote', desc: 'Submit your shipment details.' },
-                { title: 'Cargo Pickup', desc: 'We collect your cargo from your location.' },
-                { title: 'Customs & Shipping', desc: 'We handle customs clearance and transportation.' },
-                { title: 'Safe Delivery', desc: 'Your shipment is delivered to your destination.' }
-              ].map((step, index) => (
-                <React.Fragment key={index}>
+            {/* Mobile/Tablet Horizontal Scroll */}
+            <div className="lg:hidden overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6">
+              <div className="flex gap-4 min-w-max">
+                {[
+                  { title: 'Request a Quote', desc: 'Submit your shipment details.' },
+                  { title: 'Cargo Pickup', desc: 'We collect your cargo from your location.' },
+                  { title: 'Customs & Shipping', desc: 'We handle customs clearance and transportation.' },
+                  { title: 'Safe Delivery', desc: 'Your shipment is delivered to your destination.' }
+                ].map((step, index) => (
                   <div 
+                    key={index}
                     id={`process-step-${index}`}
                     data-animate
-                    className={`transition-all duration-700 ${
+                    className={`flex-shrink-0 transition-all duration-700 ${
                       isVisible[`process-step-${index}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                     style={{
-                      transitionDelay: `${index * 100}ms`
+                      transitionDelay: `${index * 100}ms`,
+                      width: '280px'
                     }}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-1 relative">
-                        {index < 3 && (
-                          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gray-800"></div>
-                        )}
-                        <div className="pl-0 pb-6 w-full">
-                          <div 
-                            className="border border-gray-800 bg-black p-6 transition-all duration-500 hover:border-gray-600 relative overflow-hidden flex flex-col"
-                            style={{ borderRadius: '0px', minHeight: '220px' }}
-                          >
-                            {/* Grainy overlay on card */}
-                            <div 
-                              className="absolute inset-0 pointer-events-none"
-                              style={{
-                                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E")`,
-                                opacity: 0.1,
-                                mixBlendMode: 'overlay'
-                              }}
-                            ></div>
-                            
-                            <div className="relative z-10 flex flex-col h-full">
-                              <div className="text-xs font-semibold text-gray-500 mb-4 tracking-wider uppercase">
-                                Step {index + 1}
-                              </div>
-                              <h3 
-                                className="text-white mb-3 leading-[1.1] tracking-tight"
-                                style={{ 
-                                  fontSize: 'clamp(20px, 5vw, 28px)', 
-                                  letterSpacing: '-0.02em',
-                                  fontWeight: 'bold',
-                                  lineHeight: '1.1'
-                                }}
-                              >
-                                {step.title}
-                              </h3>
-                              <p className="text-sm text-gray-400 leading-relaxed mt-auto">
-                                {step.desc}
-                              </p>
-                            </div>
-                          </div>
+                    <div 
+                      className="border border-gray-800 bg-black p-6 transition-all duration-500 hover:border-gray-600 relative overflow-hidden flex flex-col"
+                      style={{ borderRadius: '0px', minHeight: '240px' }}
+                    >
+                      {/* Grainy overlay on card */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E")`,
+                          opacity: 0.1,
+                          mixBlendMode: 'overlay'
+                        }}
+                      ></div>
+                      
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="text-xs font-semibold text-gray-500 mb-4 tracking-wider uppercase">
+                          Step {index + 1}
                         </div>
+                        <h3 
+                          className="text-white mb-3 leading-[1.1] tracking-tight"
+                          style={{ 
+                            fontSize: 'clamp(20px, 5vw, 28px)', 
+                            letterSpacing: '-0.02em',
+                            fontWeight: 'bold',
+                            lineHeight: '1.1'
+                          }}
+                        >
+                          {step.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mt-auto">
+                          {step.desc}
+                        </p>
                       </div>
                     </div>
                   </div>
-                </React.Fragment>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
+      <section id="technology" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="tech-title"
             data-animate
-            className={`text-center mb-24 transition-all duration-1000 ${
+            className={`text-center mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
               isVisible['tech-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#000000' }}>Trusted Since </span>
               <span style={{ color: '#000000' }}>2002</span>
             </h2>
-            <p className="text-xl text-black/80 max-w-3xl mx-auto mb-16">
-              HMSS - Hussain Murad Shipping Services LLC is at the forefront of global transportation and logistics worldwide. We define logistics as the management of goods, information, and financial transactions ensuring timely and cost-effective flow from suppliers to customers globally.
+            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
+              Hussain Murad Shipping Services LLC (HMSS) is a Dubai-based logistics company providing reliable sea freight, air freight, customs clearance, and door-to-door delivery. We connect Dubai to the world with fast, secure, and cost-effective shipping solutions.
             </p>
           </div>
 
           {/* Stats Section with Animation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto mb-6 sm:mb-8">
             {stats.map((stat, index) => {
               // Calculate years dynamically
               const currentYear = new Date().getFullYear();
@@ -706,7 +831,7 @@ Message: ${formData.message}
                   }}
                 >
                   <div 
-                    className="text-5xl md:text-6xl font-bold mb-3"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3"
                     style={{ color: '#000000' }}
                   >
                     {stat.label === "Years in Business" ? (
@@ -715,7 +840,7 @@ Message: ${formData.message}
                       <AnimatedCounter value={stat.value} duration={2000} />
                     )}
                   </div>
-                  <div className="text-lg text-black/70 font-medium">{stat.label}</div>
+                  <div className="text-xs sm:text-sm md:text-base lg:text-lg text-black/70 font-medium">{stat.label}</div>
                 </div>
               );
             })}
@@ -724,24 +849,24 @@ Message: ${formData.message}
       </section>
 
       {/* Clients Section */}
-      <section id="clients" className="py-40 px-[7.6923%] relative" style={{ zIndex: 10 }}>
+      <section id="clients" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto">
           <div 
             id="clients-title"
             data-animate
-            className={`text-center mb-24 transition-all duration-1000 ${
+            className={`text-center mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#000000' }}>Trusted by </span>
               <span style={{ color: '#000000' }}>Industry Leaders</span>
             </h2>
           </div>
 
           {/* Scrolling Clients */}
-          <div className="mb-32 overflow-hidden relative">
-            <div className="flex gap-16 animate-scroll-left">
+          <div className="mb-8 sm:mb-10 md:mb-12 overflow-hidden relative">
+            <div className="flex gap-8 sm:gap-12 md:gap-16 animate-scroll-left">
               {/* First set */}
               {clients.map((client, index) => {
                 // Color mapping for each company
@@ -761,10 +886,10 @@ Message: ${formData.message}
                   <div
                     key={`client-1-${index}`}
                     className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                    style={{ minWidth: '200px' }}
+                    style={{ minWidth: 'clamp(120px, 25vw, 200px)' }}
                   >
                     <span 
-                      className="text-2xl font-bold whitespace-nowrap"
+                      className="text-lg sm:text-xl md:text-2xl font-bold whitespace-nowrap"
                       style={{ color: colors[index] }}
                     >
                       {client.logo}
@@ -790,10 +915,10 @@ Message: ${formData.message}
                   <div
                     key={`client-2-${index}`}
                     className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                    style={{ minWidth: '200px' }}
+                    style={{ minWidth: 'clamp(120px, 25vw, 200px)' }}
                   >
                     <span 
-                      className="text-2xl font-bold whitespace-nowrap"
+                      className="text-lg sm:text-xl md:text-2xl font-bold whitespace-nowrap"
                       style={{ color: colors[index] }}
                     >
                       {client.logo}
@@ -805,20 +930,20 @@ Message: ${formData.message}
           </div>
 
           {/* Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
                 id={`testimonial-${testimonial.id}`}
                 data-animate
-                className={`border border-black/20 p-8 transition-all duration-700 ${
+                className={`border border-black/20 p-6 sm:p-8 transition-all duration-700 ${
                   isVisible[`testimonial-${testimonial.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
                   transitionDelay: `${index * 150}ms`
                 }}
               >
-                <p className="text-lg text-black/90 mb-8 leading-relaxed italic">
+                <p className="text-base sm:text-lg text-black/90 mb-6 sm:mb-8 leading-relaxed italic">
                   "{testimonial.quote}"
                 </p>
                 <div>
@@ -833,25 +958,25 @@ Message: ${formData.message}
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
+      <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
           <div className="max-w-4xl mx-auto">
           <div 
             id="contact-title"
             data-animate
-            className={`text-center mb-16 transition-all duration-1000 ${
+            className={`text-center mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
               isVisible['contact-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
               <span style={{ color: '#000000' }}>Let's </span>
               <span style={{ color: '#000000' }}>Connect</span>
             </h2>
-            <p className="text-xl text-black/80 mb-4">
+            <p className="text-base sm:text-lg md:text-xl text-black/80 mb-3 sm:mb-4 px-4">
               Ready to transform your logistics operations? Get in touch with our team.
             </p>
             <a 
               href="tel:+971559994939" 
-              className="text-lg font-medium text-black/80 hover:text-black transition-colors duration-300 inline-block"
+              className="text-base sm:text-lg font-medium text-black/80 hover:text-black transition-colors duration-300 inline-block"
             >
               📞 +971 55 999 4939
             </a>
@@ -861,11 +986,11 @@ Message: ${formData.message}
             onSubmit={handleSubmit}
             id="contact-form"
             data-animate
-            className={`space-y-8 transition-all duration-1000 ${
+            className={`space-y-5 sm:space-y-6 md:space-y-8 transition-all duration-1000 ${
               isVisible['contact-form'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
               <div>
                 <Input
                   type="text"
@@ -874,7 +999,7 @@ Message: ${formData.message}
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -898,7 +1023,7 @@ Message: ${formData.message}
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -924,7 +1049,7 @@ Message: ${formData.message}
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -947,7 +1072,7 @@ Message: ${formData.message}
                   placeholder="Company Name"
                   value={formData.company}
                   onChange={handleChange}
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -973,7 +1098,7 @@ Message: ${formData.message}
                   value={formData.origin}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -997,7 +1122,7 @@ Message: ${formData.message}
                   value={formData.destination}
                   onChange={handleChange}
                   required
-                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                  className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                   style={{ 
                     borderRadius: '0px',
                     borderWidth: '1px',
@@ -1022,7 +1147,7 @@ Message: ${formData.message}
                 value={formData.cargoType}
                 onChange={handleChange}
                 required
-                className="bg-white border-black/20 text-black placeholder:text-black/40 h-14 text-lg transition-colors"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 h-12 sm:h-14 text-base sm:text-lg transition-colors"
                 style={{ 
                   borderRadius: '0px',
                   borderWidth: '1px',
@@ -1046,7 +1171,7 @@ Message: ${formData.message}
                 onChange={handleChange}
                 required
                 rows={6}
-                className="bg-white border-black/20 text-black placeholder:text-black/40 text-lg focus:border-black transition-colors resize-none"
+                className="bg-white border-black/20 text-black placeholder:text-black/40 text-base sm:text-lg focus:border-black transition-colors resize-none"
                 style={{ 
                   borderRadius: '0px',
                   borderWidth: '1px',
@@ -1069,12 +1194,12 @@ Message: ${formData.message}
                 color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '0px',
-                padding: '16px 32px',
-                fontSize: '18px',
+                padding: '14px 24px',
+                fontSize: 'clamp(14px, 4vw, 18px)',
                 fontWeight: '500',
                 cursor: 'pointer',
                 transition: 'all 0.4s ease-in-out',
-                minHeight: '56px',
+                minHeight: '48px',
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
@@ -1098,26 +1223,26 @@ Message: ${formData.message}
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-black/20 py-12 px-[7.6923%]">
+      <footer className="border-t border-black/20 py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-[7.6923%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-3 sm:gap-4">
               <img 
                 src="/img/hmss_logo.jpeg" 
                 alt="HMSS Logo" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain"
               />
-              <div>
+              <div className="text-center md:text-left">
                 <div 
-                  className="text-2xl font-semibold mb-2"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2"
                   style={{ color: '#000000' }}
                 >
                   HUSSAIN MURAD SHIPPING SERVICES LLC
                 </div>
-                <div className="text-black/70">Established 2002 | Dubai, UAE</div>
+                <div className="text-sm sm:text-base text-black/70">Established 2002 | Dubai, UAE</div>
               </div>
             </div>
-            <div className="text-black/60 text-center md:text-right">
+            <div className="text-xs sm:text-sm md:text-base text-black/60 text-center md:text-right">
               © 2026 Hussain Murad Shipping Services LLC. All rights reserved.
             </div>
           </div>

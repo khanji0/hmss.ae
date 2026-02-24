@@ -14,42 +14,42 @@ export const services = [
     id: 1,
     number: "01",
     title: "International Freight Forwarding",
-    description: "Worldwide freight services for all Import/Export/Cross Trade shipments via Sea, Air, and Road. LCL Consolidation, Groupage, Transshipment, and Cross Trade Shipments with Switch BL and Fresh Documentation support.",
+    description: "Reliable global shipping by sea, air, and land. We manage import and export shipments worldwide with secure handling, timely delivery, and complete logistics support.",
     image: "/img/international.jpg"
   },
   {
     id: 2,
     number: "02",
     title: "Customs Clearance & Documentation",
-    description: "E-clearance through Customs Online Services, DDU/DDP clearance, door delivery services, and complete legalization/attestation from Chamber of Commerce, Ministry of Foreign Affairs, and Embassies & Consulate.",
+    description: "Our dedicated team of 10+ experienced customs specialists ensures fast and smooth clearance, handling all documentation and regulatory requirements without delays.",
     image: "/img/cutom.jpg"
   },
   {
     id: 3,
     number: "03",
     title: "Transportation & Fleet Services",
-    description: "Local transportation through owned fleet of trucks and trailers for 20ft/40ft standard containers and special equipment. Local & GCC land transport services with complete door-to-door delivery.",
+    description: "With 15+ heavy trucks and trailers, we transport containers and cargo of all types safely across the UAE and GCC with reliable and timely delivery.",
     image: "/img/truck.jpg"
   },
   {
     id: 4,
     number: "04",
     title: "Warehousing & Distribution",
-    description: "Complete warehousing, storage, packing, labeling, re-labeling, crating, processing, dismantling, and distribution services for end-to-end supply chain management.",
+    description: "Secure storage, cargo handling, and efficient distribution solutions designed to keep your goods safe and your supply chain running smoothly.",
     image: "/img/warehouse.jpg"
   },
   {
     id: 5,
     number: "05",
     title: "Specialized Cargo Handling",
-    description: "Exhibition cargo, vehicles, live plants clearance, ISO tank container handling, SOC container handling, cross stuffing inside/outside Port CFS, and marine insurance for local & cross trade shipments.",
+    description: "Expert handling for vehicles, heavy equipment, personal goods, and temperature-sensitive cargo with professional care and secure transport.",
     image: "/img/HMSS.png"
   },
   {
     id: 6,
     number: "06",
     title: "Container Trading & Personal Services",
-    description: "Second-hand container trading including special equipment (Reefers, Open Tops, Flat Racks). Personal effects shipments, house & office shifting, packing & removals services.",
+    description: "We provide container buying and selling, vehicle shipping, and personal cargo services with flexible and cost-effective solutions.",
     image: "/img/HMSS.jpg"
   }
 ];
