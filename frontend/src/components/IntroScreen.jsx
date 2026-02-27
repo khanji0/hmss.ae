@@ -95,7 +95,7 @@ const IntroScreen = ({ onComplete }) => {
                 className="flex-shrink-0"
               >
                 <img 
-                  src="/img/hmss_logo.jpeg" 
+                  src={`${process.env.PUBLIC_URL || ''}/img/hmss_logo.jpeg`}
                   alt="HMSS Logo" 
                   className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain"
                 />

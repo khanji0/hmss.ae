@@ -34,7 +34,7 @@ const Navigation = () => {
           style={{ minHeight: '80px' }}
         >
           <img 
-            src="/img/hmss_logo.jpeg" 
+            src={`${process.env.PUBLIC_URL || ''}/img/hmss_logo.jpeg`}
             alt="HMSS Logo" 
             className="h-8 sm:h-10 md:h-12 w-auto object-contain"
           />

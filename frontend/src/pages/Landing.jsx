@@ -1228,7 +1228,7 @@ Message: ${formData.message}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-3 sm:gap-4">
               <img 
-                src="/img/hmss_logo.jpeg" 
+                src={`${process.env.PUBLIC_URL || ''}/img/hmss_logo.jpeg`}
                 alt="HMSS Logo" 
                 className="h-12 sm:h-14 md:h-16 w-auto object-contain"
               />

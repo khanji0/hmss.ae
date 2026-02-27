@@ -15,42 +15,42 @@ export const services = [
     number: "01",
     title: "International Freight Forwarding",
     description: "Reliable global shipping by sea, air, and land. We manage import and export shipments worldwide with secure handling, timely delivery, and complete logistics support.",
-    image: "/img/international.jpg"
+    image: `${process.env.PUBLIC_URL || ''}/img/international.jpg`
   },
   {
     id: 2,
     number: "02",
     title: "Customs Clearance & Documentation",
     description: "Our dedicated team of 10+ experienced customs specialists ensures fast and smooth clearance, handling all documentation and regulatory requirements without delays.",
-    image: "/img/cutom.jpg"
+    image: `${process.env.PUBLIC_URL || ''}/img/cutom.jpg`
   },
   {
     id: 3,
     number: "03",
     title: "Transportation & Fleet Services",
     description: "With 15+ heavy trucks and trailers, we transport containers and cargo of all types safely across the UAE and GCC with reliable and timely delivery.",
-    image: "/img/truck.jpg"
+    image: `${process.env.PUBLIC_URL || ''}/img/truck.jpg`
   },
   {
     id: 4,
     number: "04",
     title: "Warehousing & Distribution",
     description: "Secure storage, cargo handling, and efficient distribution solutions designed to keep your goods safe and your supply chain running smoothly.",
-    image: "/img/warehouse.jpg"
+    image: `${process.env.PUBLIC_URL || ''}/img/warehouse.jpg`
   },
   {
     id: 5,
     number: "05",
     title: "Specialized Cargo Handling",
     description: "Expert handling for vehicles, heavy equipment, personal goods, and temperature-sensitive cargo with professional care and secure transport.",
-    image: "/img/HMSS.png"
+    image: `${process.env.PUBLIC_URL || ''}/img/HMSS.png`
   },
   {
     id: 6,
     number: "06",
     title: "Container Trading & Personal Services",
     description: "We provide container buying and selling, vehicle shipping, and personal cargo services with flexible and cost-effective solutions.",
-    image: "/img/HMSS.jpg"
+    image: `${process.env.PUBLIC_URL || ''}/img/HMSS.jpg`
   }
 ];
 
