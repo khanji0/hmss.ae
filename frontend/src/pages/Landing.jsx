@@ -189,14 +189,14 @@ Message: ${formData.message}
 
 
   return (
-    <div className="text-black min-h-screen relative overflow-hidden bg-white">
+    <div className="text-black min-h-screen relative overflow-x-hidden bg-white">
       <GridBackground />
       <GradientOverlay />
       <div className="relative" style={{ zIndex: 10 }}>
         <Navigation />
 
         {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-start justify-start px-4 sm:px-6 md:px-[7.6923%] pt-24 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative" style={{ zIndex: 10 }}>
+      <section className="min-h-screen flex flex-col items-start justify-start px-4 sm:px-6 md:px-[7.6923%] pt-24 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative overflow-x-hidden" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto text-center w-full">
             <div 
               className="animate-fade-in"
@@ -267,8 +267,8 @@ Message: ${formData.message}
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative" style={{ zIndex: 10 }}>
-          <div className="max-w-[1400px] mx-auto">
+      <section id="services" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative overflow-x-hidden" style={{ zIndex: 10 }}>
+          <div className="max-w-[1400px] mx-auto w-full">
           <div 
             id="services-title" 
             data-animate
@@ -286,7 +286,7 @@ Message: ${formData.message}
           </div>
 
           {/* Mobile Horizontal Scroll */}
-          <div className="md:hidden overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6">
+          <div className="md:hidden overflow-x-auto pb-4 px-0" style={{ marginLeft: '-1rem', marginRight: '-1rem', paddingLeft: '1rem', paddingRight: '1rem' }}>
             <div className="flex gap-6 min-w-max">
               {services.map((service, index) => (
                 <div
@@ -471,8 +471,8 @@ Message: ${formData.message}
       </section>
 
       {/* Get a Quote Section */}
-      <section id="pricing" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
-        <div className="max-w-[1400px] mx-auto">
+      <section id="pricing" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative overflow-x-hidden" style={{ zIndex: 10 }}>
+        <div className="max-w-[1400px] mx-auto w-full">
           <div 
             id="pricing-title"
             data-animate
@@ -493,7 +493,7 @@ Message: ${formData.message}
           <div 
             id="pricing-cta"
             data-animate
-            className={`flex flex-row items-center justify-center gap-6 sm:gap-8 transition-all duration-1000 ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 transition-all duration-1000 ${
               isVisible['pricing-cta'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -523,7 +523,7 @@ Message: ${formData.message}
               />
             </motion.a>
             
-            <div className="text-left">
+            <div className="text-center sm:text-left">
               <div className="text-lg sm:text-xl md:text-2xl font-semibold text-black mb-1">
                 +971 55 999 4939
               </div>
@@ -540,7 +540,7 @@ Message: ${formData.message}
       </section>
 
       {/* Process Flow Section */}
-      <section id="process" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-black relative overflow-hidden" style={{ zIndex: 10 }}>
+      <section id="process" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-black relative overflow-x-hidden" style={{ zIndex: 10 }}>
         {/* Grid Background with Red Dots */}
         <ProcessGridBackground />
         
@@ -730,7 +730,7 @@ Message: ${formData.message}
             </div>
 
             {/* Mobile/Tablet Horizontal Scroll */}
-            <div className="lg:hidden overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6">
+            <div className="lg:hidden overflow-x-auto pb-4 px-0" style={{ marginLeft: '-1rem', marginRight: '-1rem', paddingLeft: '1rem', paddingRight: '1rem' }}>
               <div className="flex gap-4 min-w-max">
                 {[
                   { title: 'Request a Quote', desc: 'Submit your shipment details.' },
@@ -793,8 +793,8 @@ Message: ${formData.message}
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
-          <div className="max-w-[1400px] mx-auto">
+      <section id="technology" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative overflow-x-hidden" style={{ zIndex: 10 }}>
+          <div className="max-w-[1400px] mx-auto w-full">
           <div 
             id="tech-title"
             data-animate
@@ -849,8 +849,8 @@ Message: ${formData.message}
       </section>
 
       {/* Clients Section */}
-      <section id="clients" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative" style={{ zIndex: 10 }}>
-          <div className="max-w-[1400px] mx-auto">
+      <section id="clients" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative overflow-x-hidden" style={{ zIndex: 10 }}>
+          <div className="max-w-[1400px] mx-auto w-full">
           <div 
             id="clients-title"
             data-animate
@@ -958,8 +958,8 @@ Message: ${formData.message}
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative" style={{ zIndex: 10 }}>
-          <div className="max-w-4xl mx-auto">
+      <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] bg-gray-50/50 backdrop-blur-sm relative overflow-x-hidden" style={{ zIndex: 10 }}>
+          <div className="max-w-4xl mx-auto w-full">
           <div 
             id="contact-title"
             data-animate
