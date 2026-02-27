@@ -196,8 +196,8 @@ Message: ${formData.message}
         <Navigation />
 
         {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-start justify-start px-4 sm:px-6 md:px-[7.6923%] pt-24 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative overflow-x-hidden" style={{ zIndex: 10 }}>
-          <div className="max-w-[1400px] mx-auto text-center w-full">
+      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-[7.6923%] pt-20 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative overflow-x-hidden" style={{ zIndex: 10 }}>
+          <div className="max-w-[1400px] w-full mx-auto text-center">
             <div 
               className="animate-fade-in"
               style={{
@@ -205,17 +205,17 @@ Message: ${formData.message}
               }}
             >
             <h1 
-              className="leading-[1.1] tracking-tight mb-4 sm:mb-6"
-              style={{ fontSize: 'clamp(36px, 8vw, 120px)', letterSpacing: '-0.02em' }}
+              className="leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6 w-full"
+              style={{ fontSize: 'clamp(32px, 7vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
               <span style={{ color: '#006039', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 max-w-3xl mx-auto font-bold tracking-wide px-4" style={{ color: '#DC143C' }}>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#DC143C' }}>
               Connecting Dubai to the World Since 2002
             </p>
-            <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 mb-6 sm:mb-8 max-w-3xl mx-auto font-normal leading-relaxed px-4 mt-6 sm:mt-8 md:mt-10">
+            <div className="text-sm sm:text-base md:text-lg lg:text-xl text-black/90 mb-4 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-normal leading-relaxed px-2 sm:px-4 mt-4 sm:mt-6 md:mt-8">
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
                 {companyInfo.description.split(' • ').map((item, index) => (
                   <motion.span
@@ -239,7 +239,7 @@ Message: ${formData.message}
             </div>
             
             {/* Scroll Down Animation */}
-            <div className="flex flex-col items-center gap-3 animate-scroll-indicator mt-24 sm:mt-32 md:mt-32 lg:mt-36">
+            <div className="flex flex-col items-center gap-2 sm:gap-3 animate-scroll-indicator mt-8 sm:mt-16 md:mt-24 lg:mt-32">
               <span className="text-sm font-medium text-black/60 tracking-wider uppercase">Learn More</span>
             <div 
               className="flex flex-col items-center gap-2 cursor-pointer group"
