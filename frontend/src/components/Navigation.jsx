@@ -28,7 +28,11 @@ const Navigation = () => {
     >
       <div className="h-full px-[7.6923%] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3" style={{ minHeight: '80px' }}>
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2 sm:gap-3 cursor-pointer hover:opacity-80 transition-opacity duration-300"
+          style={{ minHeight: '80px' }}
+        >
           <img 
             src="/img/hmss_logo.jpeg" 
             alt="HMSS Logo" 
@@ -45,7 +49,7 @@ const Navigation = () => {
           >
             HMSS
           </span>
-        </div>
+        </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
