@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/hmss.ae/static/css/main.06fb4799.css",
-    "main.js": "/hmss.ae/static/js/main.460e645b.js",
+    "main.css": "/hmss.ae/static/css/main.27003b1a.css",
+    "main.js": "/hmss.ae/static/js/main.7edaea6b.js",
     "index.html": "/hmss.ae/index.html",
-    "main.06fb4799.css.map": "/hmss.ae/static/css/main.06fb4799.css.map",
-    "main.460e645b.js.map": "/hmss.ae/static/js/main.460e645b.js.map"
+    "main.27003b1a.css.map": "/hmss.ae/static/css/main.27003b1a.css.map",
+    "main.7edaea6b.js.map": "/hmss.ae/static/js/main.7edaea6b.js.map"
   },
   "entrypoints": [
-    "static/css/main.06fb4799.css",
-    "static/js/main.460e645b.js"
+    "static/css/main.27003b1a.css",
+    "static/js/main.7edaea6b.js"
   ]
 }
