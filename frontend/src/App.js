@@ -1,6 +1,6 @@
 import "@/App.css";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import IntroScreen from "./components/IntroScreen";
 import { Toaster } from "./components/ui/sonner";
@@ -14,12 +14,12 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
         <Routes>
           <Route path="/" element={<Landing />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Toaster />
     </div>
   );
