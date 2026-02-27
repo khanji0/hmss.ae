@@ -196,7 +196,7 @@ Message: ${formData.message}
         <Navigation />
 
         {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-[7.6923%] pt-20 sm:pt-32 md:pt-[140px] pb-12 sm:pb-16 md:pb-20 relative overflow-x-hidden" style={{ zIndex: 10 }}>
+      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-[7.6923%] pt-16 sm:pt-24 md:pt-[140px] pb-8 sm:pb-12 md:pb-20 relative overflow-x-hidden" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] w-full mx-auto text-center">
             <div 
               className="animate-fade-in"
@@ -205,18 +205,18 @@ Message: ${formData.message}
               }}
             >
             <h1 
-              className="leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6 w-full"
-              style={{ fontSize: 'clamp(32px, 7vw, 120px)', letterSpacing: '-0.02em' }}
+              className="leading-[1.1] tracking-tight mb-4 sm:mb-5 md:mb-6 w-full"
+              style={{ fontSize: 'clamp(42px, 9vw, 120px)', letterSpacing: '-0.02em' }}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
               <span style={{ color: '#006039', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#DC143C' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#DC143C' }}>
               Connecting Dubai to the World Since 2002
             </p>
-            <div className="text-sm sm:text-base md:text-lg lg:text-xl text-black/90 mb-4 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-normal leading-relaxed px-2 sm:px-4 mt-4 sm:mt-6 md:mt-8">
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 mb-6 sm:mb-8 md:mb-10 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-normal leading-relaxed px-2 sm:px-4 mt-6 sm:mt-8 md:mt-10">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 sm:gap-2 md:gap-3">
                 {companyInfo.description.split(' • ').map((item, index) => (
                   <motion.span
                     key={index}
@@ -227,11 +227,11 @@ Message: ${formData.message}
                       delay: index * 0.2,
                       ease: [0.16, 1, 0.3, 1]
                     }}
-                    className="inline-block"
+                    className="block sm:inline-block text-center"
                   >
                     {item}
                     {index < companyInfo.description.split(' • ').length - 1 && (
-                      <span className="mx-2 text-black/40">•</span>
+                      <span className="mx-2 sm:mx-1 md:mx-2 text-black/40 hidden sm:inline">•</span>
                     )}
                   </motion.span>
                 ))}
@@ -239,7 +239,7 @@ Message: ${formData.message}
             </div>
             
             {/* Scroll Down Animation */}
-            <div className="flex flex-col items-center gap-2 sm:gap-3 animate-scroll-indicator mt-8 sm:mt-16 md:mt-24 lg:mt-32">
+            <div className="flex flex-col items-center gap-2 sm:gap-3 animate-scroll-indicator mt-12 sm:mt-16 md:mt-24 lg:mt-32">
               <span className="text-sm font-medium text-black/60 tracking-wider uppercase">Learn More</span>
             <div 
               className="flex flex-col items-center gap-2 cursor-pointer group"
