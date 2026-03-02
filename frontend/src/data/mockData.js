@@ -55,6 +55,9 @@ export const services = [
 ];
 
 export const clients = [
+  { name: "MM", logo: "MM" },
+  { name: "Yang Ming Marine Transport Corporation", logo: "YANG MING" },
+  { name: "Orient Overseas Container Line", logo: "OOCL" },
   { name: "Mediterranean Shipping Company", logo: "MSC" },
   { name: "Maersk", logo: "MAERSK" },
   { name: "CMA CGM", logo: "CMA CGM" },
@@ -62,9 +65,7 @@ export const clients = [
   { name: "Hapag-Lloyd", logo: "HAPAG-LLOYD" },
   { name: "Ocean Network Express", logo: "ONE" },
   { name: "Evergreen Marine Corporation", logo: "EVERGREEN" },
-  { name: "HMM", logo: "HMM" },
-  { name: "Yang Ming Marine Transport Corporation", logo: "YANG MING" },
-  { name: "Orient Overseas Container Line", logo: "OOCL" }
+  { name: "HMM", logo: "HMM" }
 ];
 
 export const testimonials = [

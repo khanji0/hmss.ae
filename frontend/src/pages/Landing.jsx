@@ -849,12 +849,12 @@ Message: ${formData.message}
       </section>
 
       {/* Clients Section */}
-      <section id="clients" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[7.6923%] relative overflow-x-hidden" style={{ zIndex: 10 }}>
+      <section id="clients" className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-[7.6923%] relative overflow-x-hidden" style={{ zIndex: 10 }}>
           <div className="max-w-[1400px] mx-auto w-full">
           <div 
             id="clients-title"
             data-animate
-            className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ${
+            className={`text-center mb-4 sm:mb-6 md:mb-8 transition-all duration-1000 ${
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -865,22 +865,23 @@ Message: ${formData.message}
           </div>
 
           {/* Scrolling Clients */}
-          <div className="mb-12 sm:mb-16 md:mb-20 overflow-hidden relative">
-            <div className="flex gap-8 sm:gap-12 md:gap-16 animate-scroll-left">
+          <div className="mb-4 sm:mb-6 md:mb-8 mt-20 sm:mt-28 md:mt-36 lg:mt-44 overflow-hidden relative">
+            <div className="flex gap-8 sm:gap-12 md:gap-16 animate-scroll-left justify-center">
               {/* First set */}
               {clients.map((client, index) => {
                 // Color mapping for each company
                 const colors = [
+                  '#1E3A8A', // MM - Blue
+                  '#FF6B00', // YANG MING - Orange
+                  '#003087', // OOCL - Blue
                   '#FF6B35', // MSC - Orange
-                  '#C8102E', // Maersk - Red
+                  '#C8102E', // MAERSK - Red
                   '#003087', // CMA CGM - Blue
                   '#FF6B00', // COSCO - Orange
-                  '#FFCC00', // Hapag-Lloyd - Yellow
+                  '#FFCC00', // HAPAG-LLOYD - Yellow
                   '#FF6900', // ONE - Orange
-                  '#00A651', // Evergreen - Green
-                  '#0066CC', // HMM - Blue
-                  '#FF6B00', // Yang Ming - Orange
-                  '#003087'  // OOCL - Blue
+                  '#00A651', // EVERGREEN - Green
+                  '#0066CC'  // HMM - Blue
                 ];
                 return (
                   <div
@@ -900,16 +901,17 @@ Message: ${formData.message}
               {/* Duplicate set for seamless loop */}
               {clients.map((client, index) => {
                 const colors = [
-                  '#FF6B35', // MSC
-                  '#C8102E', // Maersk
-                  '#003087', // CMA CGM
-                  '#FF6B00', // COSCO
-                  '#FFCC00', // Hapag-Lloyd
-                  '#FF6900', // ONE
-                  '#00A651', // Evergreen
-                  '#0066CC', // HMM
-                  '#FF6B00', // Yang Ming
-                  '#003087'  // OOCL
+                  '#1E3A8A', // MM - Blue
+                  '#FF6B00', // YANG MING - Orange
+                  '#003087', // OOCL - Blue
+                  '#FF6B35', // MSC - Orange
+                  '#C8102E', // MAERSK - Red
+                  '#003087', // CMA CGM - Blue
+                  '#FF6B00', // COSCO - Orange
+                  '#FFCC00', // HAPAG-LLOYD - Yellow
+                  '#FF6900', // ONE - Orange
+                  '#00A651', // EVERGREEN - Green
+                  '#0066CC'  // HMM - Blue
                 ];
                 return (
                   <div
