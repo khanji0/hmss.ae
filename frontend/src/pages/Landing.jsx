@@ -210,7 +210,7 @@ Message: ${formData.message}
             >
               <span style={{ color: '#000000' }}>End-to-End</span>
               <br />
-              <span style={{ color: '#006039', fontWeight: 'bold' }}>Freight Solutions</span>
+              <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#DC143C' }}>
               Connecting Dubai to the World Since 2002
