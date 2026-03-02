@@ -854,7 +854,7 @@ Message: ${formData.message}
           <div 
             id="clients-title"
             data-animate
-            className={`text-center mb-6 sm:mb-8 md:mb-10 transition-all duration-1000 ${
+            className={`text-center mb-12 sm:mb-16 md:mb-20 transition-all duration-1000 ${
               isVisible['clients-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -865,7 +865,7 @@ Message: ${formData.message}
           </div>
 
           {/* Scrolling Clients */}
-          <div className="mb-8 sm:mb-10 md:mb-12 overflow-hidden relative">
+          <div className="mb-12 sm:mb-16 md:mb-20 overflow-hidden relative">
             <div className="flex gap-8 sm:gap-12 md:gap-16 animate-scroll-left">
               {/* First set */}
               {clients.map((client, index) => {
