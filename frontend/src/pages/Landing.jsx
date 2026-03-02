@@ -5,7 +5,7 @@ import Navigation from '../components/Navigation';
 import GridBackground from '../components/GridBackground';
 import GradientOverlay from '../components/GradientOverlay';
 import AnimatedCounter from '../components/AnimatedCounter';
-import { companyInfo, services, clients, testimonials, stats, features } from '../data/mockData';
+import { companyInfo, services, clients, stats, features } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -212,7 +212,7 @@ Message: ${formData.message}
               <br />
               <span style={{ color: '#000000', fontWeight: 'bold' }}>Freight Solutions</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#DC143C' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-bold tracking-wide px-2 sm:px-4" style={{ color: '#000000' }}>
               Connecting Dubai to the World Since 2002
             </p>
             <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/90 mb-6 sm:mb-8 md:mb-10 max-w-full sm:max-w-2xl md:max-w-3xl mx-auto font-normal leading-relaxed px-2 sm:px-4 mt-6 sm:mt-8 md:mt-10">
@@ -927,32 +927,6 @@ Message: ${formData.message}
                 );
               })}
             </div>
-          </div>
-
-          {/* Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                id={`testimonial-${testimonial.id}`}
-                data-animate
-                className={`border border-black/20 p-6 sm:p-8 transition-all duration-700 ${
-                  isVisible[`testimonial-${testimonial.id}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{
-                  transitionDelay: `${index * 150}ms`
-                }}
-              >
-                <p className="text-base sm:text-lg text-black/90 mb-6 sm:mb-8 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div>
-                  <div className="text-black font-semibold">{testimonial.author}</div>
-                  <div className="text-black/70 text-sm">{testimonial.role}</div>
-                  <div className="text-black/50 text-sm">{testimonial.company}</div>
-                </div>
-              </div>
-            ))}
           </div>
           </div>
       </section>
